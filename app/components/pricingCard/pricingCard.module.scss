@@ -8,9 +8,11 @@
     text-align: center;
     margin-right: 28px;
     width: 404px;
+    margin-bottom: 32px;
 }
 .card.active{
     background-color: $Primary-1;
+    margin-top: -50px;
 }
 .card:last-child{
     margin-right: 0px;
