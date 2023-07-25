@@ -1,0 +1,70 @@
+@import '../../home.module.scss';
+
+.card{
+    padding: 42px 48px;
+    background-color: $Color-700;
+    color: $Color-100;
+    border-radius: 12px;
+    text-align: center;
+    margin-right: 28px;
+    width: 404px;
+}
+.card.active{
+    background-color: $Primary-1;
+}
+.card:last-child{
+    margin-right: 0px;
+}
+.cost{
+    font-family: DM Sans;
+    font-size: 54px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 122.2%;
+    margin-bottom: 4px;
+}
+.title{
+    font-family: THICCCBOI;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 108.333%;
+    margin-bottom: 8px;
+}
+.text{
+    font-family: THICCCBOI;
+    color: $Color-400;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 166.667%;
+    padding-bottom: 40px;
+    border-bottom: 1px solid $Color-500;
+}
+.list{
+    margin: 38px 0 32px;
+    text-align: left;
+}
+.list__item{
+    display: flex;
+    align-items: center;
+    list-style-type:none;
+    margin-bottom: 14px;
+    font-family: THICCCBOI;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 111.111%; 
+}
+.list__img{
+    margin-right: 16px;
+}
+.card__buttonBlack{
+    padding: 26px 38px;
+    width: 308px;
+}
+.card__buttonRed{
+    padding: 26px 38px;
+    width: 308px;
+    color: $Color-1;
+}
