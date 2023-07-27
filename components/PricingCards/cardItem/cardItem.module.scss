@@ -61,12 +61,13 @@
     font-weight: 500;
     line-height: 111.111%; 
 }
-.list__img{
-    margin-right: 16px;
+.list__text{
+    margin-left: 16px;
 }
 .card__buttonBlack{
     padding: 26px 38px;
     width: 308px;
+    color: $Color-800;
 }
 .card__buttonRed{
     padding: 26px 38px;

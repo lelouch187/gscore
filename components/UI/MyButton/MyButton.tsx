@@ -17,10 +17,7 @@ export const MyButton = ({
   ...props
 }: MyButtonProps) => {
   return (
-    <button
-      disabled={disabled}
-      className={variant === 'primary' ? 'primary' : 'secondary'}
-      {...props}>
+    <button disabled={disabled} {...props}>
       {children}
     </button>
   );

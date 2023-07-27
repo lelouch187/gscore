@@ -2,19 +2,17 @@ import React from 'react';
 import s from './footer.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Logo } from '../UI/icons/logo';
+import { Facebook } from '../UI/icons/Facebook';
+import { Twitter } from '../UI/icons/Twitter';
+import { LinkedIn } from '../UI/icons/LinkedIn';
 
 export const Footer = () => {
   return (
     <footer className={s.footer}>
       <div className="container">
         <div className={s.footer__top}>
-          <Image
-            className={s.img}
-            src="/logo.svg"
-            alt="logo"
-            width={170}
-            height={42}
-          />
+          <Logo width="170" height="42" />
           <p className={s.title}>
             Ut enim ad minim veniam quis nostrud exercitation ea commodo
           </p>
@@ -32,28 +30,13 @@ export const Footer = () => {
           </p>
           <div className={s.social}>
             <a className={s.social__link} href="https://www.facebook.com">
-              <Image
-                src="/icons/Facebook.svg"
-                alt="facebook"
-                width={36}
-                height={36}
-              />
+              <Facebook width="36" height="36" />
             </a>
             <a className={s.social__link} href="https://twitter.com">
-              <Image
-                src="/icons/Twitter.svg"
-                alt="twitter"
-                width={36}
-                height={36}
-              />
+              <Twitter width="36" height="36" />
             </a>
             <a className={s.social__link} href="www.linkedin.com">
-              <Image
-                src="/icons/LinkedIn.svg"
-                alt="linkedIn"
-                width={36}
-                height={36}
-              />
+              <LinkedIn width="36" height="36" />
             </a>
           </div>
         </div>

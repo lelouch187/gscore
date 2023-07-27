@@ -1,13 +1,31 @@
-import Image from 'next/image';
 import s from './cardItem.module.scss';
 import { MyButton } from '../../UI/MyButton/MyButton';
 import { ProductCardType } from '@/store/types';
+import { useRouter } from 'next/navigation';
+import { useGetUserQuery } from '@/store/services';
+import { Colors } from '@/variables/colors';
+import { CheckCircle } from '@/components/UI/icons/CheckCircle';
+import { routes } from '@/variables/routes';
 
 type CardItemProps = {
   card: ProductCardType;
 };
 
 export const CardItem = ({ card }: CardItemProps) => {
+  const { data: user, error } = useGetUserQuery(null);
+  const router = useRouter();
+
+  const classBtn =
+    card.id === 2
+      ? `${s.card__buttonRed} ${Colors.secondary}`
+      : `${s.card__buttonBlack} ${Colors.secondary}`;
+
+  const hanldeSelectPropduct = () => {
+    if (error) {
+      router.push(routes.registration);
+    }
+  };
+
   return (
     <div className={card.id === 2 ? `${s.card} ${s.active}` : `${s.card}`}>
       <p className={s.cost}>${card.prices[0].price}</p>
@@ -18,53 +36,30 @@ export const CardItem = ({ card }: CardItemProps) => {
       </p>
       <ul className={s.list}>
         <li className={s.list__item}>
-          <Image
-            className={s.list__img}
-            src="/icons/checkCircle.svg"
-            width={26}
-            height={26}
-            alt="checked"
-          />{' '}
-          All features for {card.sitesCount} sites
+          <CheckCircle width="26" height="26" />
+          <span className={s.list__text}>
+            All features for {card.sitesCount} sites
+          </span>
         </li>
         <li className={s.list__item}>
-          <Image
-            className={s.list__img}
-            src="/icons/checkCircle.svg"
-            width={26}
-            height={26}
-            alt="checked"
-          />{' '}
-          Special introductory pricing
+          <CheckCircle width="26" height="26" />
+          <span className={s.list__text}>Special introductory pricing</span>
         </li>
         <li className={s.list__item}>
-          <Image
-            className={s.list__img}
-            src="/icons/checkCircle.svg"
-            width={26}
-            height={26}
-            alt="checked"
-          />{' '}
-          Unlimited Pages and Keywords
+          <CheckCircle width="26" height="26" />
+          <span className={s.list__text}>Unlimited Pages and Keywords</span>
         </li>
         <li className={s.list__item}>
-          <Image
-            className={s.list__img}
-            src="/icons/checkCircle.svg"
-            width={26}
-            height={26}
-            alt="checked"
-          />{' '}
-          Billed annually
+          <CheckCircle width="26" height="26" />
+          <span className={s.list__text}>Billed annually</span>
         </li>
       </ul>
       <MyButton
-        className={
-          card.id === 2 ? `${s.card__buttonRed}` : `${s.card__buttonBlack}`
-        }
+        onClick={hanldeSelectPropduct}
+        className={classBtn}
         disabled={false}
         isLoading={false}
-        variant="secondary">
+        variant="primary">
         Get Gscore
       </MyButton>
     </div>
