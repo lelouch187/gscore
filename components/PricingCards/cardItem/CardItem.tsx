@@ -1,13 +1,18 @@
 import Image from 'next/image';
-import s from './pricingCard.module.scss';
-import { MyButton } from '../UI/MyButton';
+import s from './cardItem.module.scss';
+import { MyButton } from '../../UI/MyButton/MyButton';
+import { ProductCardType } from '@/store/types';
 
-export const PricingCard = () => {
+type CardItemProps = {
+  card: ProductCardType;
+};
+
+export const CardItem = ({ card }: CardItemProps) => {
   return (
-    <div className={s.card}>
-      <p className={s.cost}>77$</p>
-      <h2 className={s.title}>Single site license</h2>
-      <p className={s.text}>
+    <div className={card.id === 2 ? `${s.card} ${s.active}` : `${s.card}`}>
+      <p className={s.cost}>{card.prices[0].price}</p>
+      <h2 className={s.title}>{card.sitesCount} site license</h2>
+      <p className={card.id === 2 ? `${s.text} ${s.active}` : `${s.text}`}>
         Get the advanced WordPress plugin that optimizes content with GSC
         keywords at one low annual price
       </p>
@@ -20,7 +25,7 @@ export const PricingCard = () => {
             height={26}
             alt="checked"
           />{' '}
-          Single site license
+          All features for {card.sitesCount} sites
         </li>
         <li className={s.list__item}>
           <Image
@@ -54,7 +59,9 @@ export const PricingCard = () => {
         </li>
       </ul>
       <MyButton
-        className={s.card__buttonRed}
+        className={
+          card.id === 2 ? `${s.card__buttonRed}` : `${s.card__buttonBlack}`
+        }
         disabled={false}
         isLoading={false}
         variant="secondary">

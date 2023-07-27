@@ -1,7 +1,7 @@
 'use client';
 
 import { ButtonHTMLAttributes } from 'react';
-import './MyButton.scss';
+import './myButton.scss';
 
 interface MyButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   isLoading: boolean;

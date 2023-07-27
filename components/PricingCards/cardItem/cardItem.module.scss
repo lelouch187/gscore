@@ -1,4 +1,4 @@
-@import '../../home.module.scss';
+@import '../../../styles/variables.scss';
 
 .card{
     padding: 42px 48px;
@@ -9,13 +9,13 @@
     margin-right: 28px;
     width: 404px;
     margin-bottom: 32px;
-}
-.card.active{
-    background-color: $Primary-1;
-    margin-top: -50px;
-}
-.card:last-child{
-    margin-right: 0px;
+    &.active{
+        background-color: $Primary-1;
+        margin-top: -50px;
+    }
+    &:last-child{
+        margin-right: 0px;
+    }
 }
 .cost{
     font-family: DM Sans;
@@ -42,6 +42,9 @@
     line-height: 166.667%;
     padding-bottom: 40px;
     border-bottom: 1px solid $Color-500;
+    &.active{
+        color: $Color-100;
+    }
 }
 .list{
     margin: 38px 0 32px;
