@@ -10,7 +10,7 @@ type CardItemProps = {
 export const CardItem = ({ card }: CardItemProps) => {
   return (
     <div className={card.id === 2 ? `${s.card} ${s.active}` : `${s.card}`}>
-      <p className={s.cost}>{card.prices[0].price}</p>
+      <p className={s.cost}>${card.prices[0].price}</p>
       <h2 className={s.title}>{card.sitesCount} site license</h2>
       <p className={card.id === 2 ? `${s.text} ${s.active}` : `${s.text}`}>
         Get the advanced WordPress plugin that optimizes content with GSC
