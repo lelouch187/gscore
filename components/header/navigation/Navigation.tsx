@@ -9,7 +9,7 @@ import { routes } from '@/variables/routes';
 
 export const Navigation = () => {
   const { data: user, isLoading, error } = useGetUserQuery(null);
-  const [isActive, setActive] = useState<boolean>(false);
+  const [isActive, setActive] = useState(false);
 
   if (isLoading || error) {
     return null;
