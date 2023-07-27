@@ -11,3 +11,9 @@ export type ProductCardType = {
   name: string;
   prices: PricesType[];
 };
+
+export type User = {
+  id: number;
+  email: string;
+  username: string;
+};

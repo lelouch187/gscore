@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import type { ProductCardType } from './types';
+import type { ProductCardType, User } from './types';
 import { HYDRATE } from 'next-redux-wrapper';
 
 export const gscoreApi = createApi({
@@ -16,7 +16,10 @@ export const gscoreApi = createApi({
     getProductCard: builder.query<ProductCardType[], null>({
       query: () => 'products',
     }),
+    getUser: builder.query<User, null>({
+      query: () => 'users/me',
+    }),
   }),
 });
 
-export const { useGetProductCardQuery } = gscoreApi;
+export const { useGetProductCardQuery, useGetUserQuery } = gscoreApi;
