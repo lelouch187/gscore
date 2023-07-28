@@ -4,7 +4,7 @@ import s from './popup.module.scss';
 import React from 'react';
 import Image from 'next/image';
 import { Settings } from '@/components/UI/icons/settings';
-import { Logout } from '@/components/UI/icons/logout';
+import { Logout } from '@/components/UI/icons/Logout';
 import { routes } from '@/variables/routes';
 
 export const Popup = () => {

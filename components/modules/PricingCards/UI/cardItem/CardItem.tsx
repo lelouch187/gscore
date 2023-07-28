@@ -1,5 +1,5 @@
 import s from './cardItem.module.scss';
-import { MyButton } from '../../UI/MyButton/MyButton';
+import { MyButton } from '../../../../UI/MyButton/MyButton';
 import { ProductCardType } from '@/store/types';
 import { useRouter } from 'next/navigation';
 import { useGetUserQuery } from '@/store/services';

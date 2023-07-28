@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import s from './header.module.scss';
-import { Navigation } from './navigation/Navigation';
-import { Logo } from '../UI/icons/logo';
+import { Navigation } from './UI/navigation/Navigation';
+import { Logo } from '@/components/UI/icons/Logo';
 
 export default function Header() {
   return (

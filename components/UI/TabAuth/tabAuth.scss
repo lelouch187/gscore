@@ -1,0 +1,48 @@
+@import '../../../styles/variables.scss';
+
+.default{
+    position: relative;
+    color: #FFF;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: THICCCBOI;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 110%;
+    width: 195px;
+    padding-bottom: 20px;
+    margin-right: 16px;
+    &::after{
+        content: '';
+        left: 0;
+        bottom: 0;
+        position: absolute;
+        height: 8px;
+        width: 195px;
+        background-color: $Color-600;
+        border-radius: 8px;
+    }
+}
+.active{
+    position: relative;
+    color: #FFF;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: THICCCBOI;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 110%;
+    width: 195px;
+    padding-bottom: 20px;
+    margin-right: 16px;
+    &::after{
+        content: '';
+        position: absolute;
+        height: 8px;
+        width: 100%;
+        background-color: $Color-1;
+        border-radius: 8px;
+        left: 0;
+        bottom: 0;
+    }
+}

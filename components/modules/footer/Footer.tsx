@@ -1,11 +1,10 @@
 import React from 'react';
 import s from './footer.module.scss';
-import Image from 'next/image';
 import Link from 'next/link';
-import { Logo } from '../UI/icons/logo';
-import { Facebook } from '../UI/icons/Facebook';
-import { Twitter } from '../UI/icons/Twitter';
-import { LinkedIn } from '../UI/icons/LinkedIn';
+import { Logo } from '../../UI/icons/Logo';
+import { Facebook } from '../../UI/icons/Facebook';
+import { Twitter } from '../../UI/icons/Twitter';
+import { LinkedIn } from '../../UI/icons/LinkedIn';
 
 export const Footer = () => {
   return (

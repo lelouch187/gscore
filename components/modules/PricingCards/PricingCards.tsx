@@ -1,7 +1,7 @@
 'use client';
 import { useGetProductCardQuery } from '@/store/services';
 import s from './pricingCard.module.scss';
-import { CardItem } from './cardItem/CardItem';
+import { CardItem } from './UI/cardItem/CardItem';
 
 export const PricingCards = () => {
   const { data: cards } = useGetProductCardQuery(null);

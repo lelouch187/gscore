@@ -1,5 +1,5 @@
-import { PricingCards } from '@/components/PricingCards/PricingCards';
-import s from './home.module.scss';
+import { PricingCards } from '@/components/modules/PricingCards/PricingCards';
+import s from '../styles/home.module.scss';
 
 export default function Home() {
   return (
