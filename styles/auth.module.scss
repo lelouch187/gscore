@@ -22,6 +22,7 @@
         margin-bottom: 16px; 
     }
     &__subtitle{
+        color: $Color-100;
         font-feature-settings: 'clig' off, 'liga' off;
         font-family: THICCCBOI;
         font-size: 14px;
@@ -35,4 +36,14 @@
     gap:24px;
     width: 620px;
 }
+}
+.registration__link{
+    margin-left: 8px;
+    font-family: THICCCBOI;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 112.5%;
+    text-decoration: none;
+    color: $Color-1;
 }

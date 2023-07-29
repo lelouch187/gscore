@@ -17,8 +17,20 @@ export type UserType = {
   email: string;
   username: string;
 };
+export type loginUserType = {
+  email: string;
+  password: string;
+};
+export type successLoginType = {
+  token: string;
+  user: {
+    id: number;
+    email: string;
+    username: string;
+  };
+};
 
-export type registrationUser = {
+export type registrationUserType = {
   email: string;
   username: string;
   password: string;
@@ -40,5 +52,7 @@ export type ErrorRegistrationType = {
   data: ErrorDataType;
 };
 
-export type registrationResult = SuccessRegistrationType &
+export type registrationResultType = SuccessRegistrationType &
   ErrorRegistrationType;
+
+export type loginResultType = successLoginType & ErrorRegistrationType;

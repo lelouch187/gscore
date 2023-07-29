@@ -1,21 +1,24 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ProductCardType, SuccessRegistrationType } from '../types';
+import { loginUserType, successLoginType } from '../types';
 import { RootState } from '../index';
 
-interface InitialUserState extends SuccessRegistrationType {}
+interface InitialUserState extends successLoginType {}
 
 const initialState: InitialUserState = {
-  email: '',
-  username: '',
   token: '',
+  user: {
+    id: 0,
+    email: '',
+    username: '',
+  },
 };
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setUser(state, { payload }: PayloadAction<SuccessRegistrationType>) {
-      state = payload;
+    setUser(state, { payload }: PayloadAction<successLoginType>) {
+      return payload;
     },
   },
 });

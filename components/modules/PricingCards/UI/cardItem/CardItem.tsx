@@ -62,8 +62,7 @@ export const CardItem = ({ card }: CardItemProps) => {
         onClick={hanldeSelectPropduct}
         className={classBtn}
         disabled={false}
-        isLoading={false}
-        variant="primary">
+        isLoading={false}>
         Get Gscore
       </MyButton>
     </div>

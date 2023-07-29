@@ -3,4 +3,5 @@ export enum routes {
   login = '/auth/login',
   subscriptions = '/subscriptions',
   settings = '/settings',
+  checkout = '/auth/checkout',
 }

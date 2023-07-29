@@ -1,39 +1,45 @@
 'use client';
 
-import { MyButton } from '@/components/UI/MyButton/MyButton';
 import MyInput from '@/components/UI/MyInput/MyInput';
-import { Colors } from '@/variables/colors';
 import s from '../../../styles/auth.module.scss';
-import '../../../components/UI/MyButton/myButton.scss';
-import '../../../components/UI/MyInput/myInput.scss';
+import { MyButton } from '@/components/UI/MyButton/MyButton';
 import { useForm } from 'react-hook-form';
-import { useRegistrationMutation } from '@/store/services';
-import { ErrorRegistrationType, registrationUserType } from '@/store/types';
+import {
+  ErrorRegistrationType,
+  loginUserType,
+  successLoginType,
+} from '@/store/types';
+import { useAppDispatch } from '@/store';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { Colors } from '@/variables/colors';
+import { useLoginMutation } from '@/store/services';
+import { setUser } from '@/store/slice/userSlice';
 import { routes } from '@/variables/routes';
-import Link from 'next/link';
 
-export default function Registration() {
+export default function Login() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<registrationUserType>();
-  const [registration] = useRegistrationMutation();
+  } = useForm<loginUserType>();
+  const dispatch = useAppDispatch();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [login] = useLoginMutation();
   const router = useRouter();
 
   const onSubmit = handleSubmit(async (user) => {
     setError('');
     setLoading(true);
-    await registration(user)
+    await login(user)
       .unwrap()
-      .then(() => {
-        router.push(routes.login);
+      .then((resp) => {
+        dispatch(setUser(resp as unknown as successLoginType));
+        router.push(routes.checkout);
       })
       .catch((error: ErrorRegistrationType) => {
+        console.log(error);
         setError(error.data.message);
       })
       .finally(() => {
@@ -44,21 +50,9 @@ export default function Registration() {
   return (
     <>
       <div className={s.registration__text}>
-        <h1 className={s.registration__title}>Create account</h1>
-        <p className={s.registration__subtitle}>
-          You need to enter your name and email. We will send you a temporary
-          password by email
-        </p>
+        <h1 className={s.registration__title}>Log in</h1>
       </div>
       <form onSubmit={onSubmit} className={s.registration__form}>
-        <MyInput
-          placeholder="Username"
-          error={errors.username}
-          {...register('username', { required: 'field cannot be empty' })}
-        />
-        {errors.username && (
-          <span className="error_message">{errors.username.message}</span>
-        )}
         <MyInput
           placeholder="Email"
           error={errors.email}
@@ -90,15 +84,9 @@ export default function Registration() {
           className={`${Colors.primary} registration`}
           isLoading={loading}
           disabled={false}>
-          Send password
+          Log in
         </MyButton>
         <span className="error_message">{error}</span>
-        <p className={s.registration__subtitle}>
-          Have an account?
-          <Link href="/auth/login" className={s.registration__link}>
-            Go to the next step
-          </Link>
-        </p>
       </form>
     </>
   );
