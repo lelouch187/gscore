@@ -11,9 +11,9 @@ export const Less = ({ width, height }: IconPropsType) => {
       <path
         d="M3 11.6395H21"
         stroke="white"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

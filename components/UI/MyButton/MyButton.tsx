@@ -2,23 +2,27 @@
 
 import { ButtonHTMLAttributes } from 'react';
 import './myButton.scss';
+import '../../../styles/globals.scss';
+import { Loader } from '../icons/Loader';
 
 interface MyButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   isLoading: boolean;
-  variant: 'primary' | 'secondary';
   disabled: boolean;
 }
 
 export const MyButton = ({
   isLoading,
-  variant,
   disabled,
   children,
   ...props
 }: MyButtonProps) => {
   return (
-    <button disabled={disabled} {...props}>
-      {children}
+    <button type="submit" disabled={disabled} {...props}>
+      {isLoading ? (
+        <Loader className="animate" width="24" height="18" />
+      ) : (
+        children
+      )}
     </button>
   );
 };

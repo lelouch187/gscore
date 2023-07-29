@@ -1,5 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import type { ProductCardType, UserType } from './types';
+import type {
+  ProductCardType,
+  UserType,
+  registrationResult,
+  registrationUser,
+} from './types';
 import { HYDRATE } from 'next-redux-wrapper';
 
 export const gscoreApi = createApi({
@@ -19,7 +24,18 @@ export const gscoreApi = createApi({
     getUser: builder.query<UserType, null>({
       query: () => 'users/me',
     }),
+    registration: builder.mutation<registrationResult, registrationUser>({
+      query: (user) => ({
+        url: 'users/sign-up',
+        method: 'POST',
+        body: user,
+      }),
+    }),
   }),
 });
 
-export const { useGetProductCardQuery, useGetUserQuery } = gscoreApi;
+export const {
+  useGetProductCardQuery,
+  useGetUserQuery,
+  useRegistrationMutation,
+} = gscoreApi;

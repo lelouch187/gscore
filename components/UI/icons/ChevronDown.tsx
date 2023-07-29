@@ -11,9 +11,9 @@ export const ChevronDown = ({ width, height }: IconPropsType) => {
       <path
         d="M5 8.5L12 15.5L19 8.5"
         stroke="white"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

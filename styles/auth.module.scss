@@ -1,5 +1,38 @@
+@import './variables.scss';
+
 .auth{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.registration{
+    &__text{
+        color: $Color-100;
+        margin-bottom: 32px;
+        width: 620px;
+    }
+    &__title{
+        color: $Color-100;
+        font-feature-settings: 'clig' off, 'liga' off;
+        font-family: THICCCBOI;
+        font-size: 44px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 122.727%;
+        margin-bottom: 16px; 
+    }
+    &__subtitle{
+        font-feature-settings: 'clig' off, 'liga' off;
+        font-family: THICCCBOI;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 171.429%;
+    }
+    &__form{
+    display: flex;
+    flex-direction: column;
+    gap:24px;
+    width: 620px;
+}
 }

@@ -5,17 +5,19 @@
     color: $Color-100;
     border-radius: 4px;
     font-family: THICCCBOI;
-    font-size: 18px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 700;
     line-height: 111.111%;
     border: none;
     cursor: pointer;
+    padding: 20px 24px;
 }
 .primary:hover{
     background-color: $Red-400;
 }
 .primary:focus{
+    padding: 16px 20px;
     border: 4px solid rgba(252, 88, 66, 0.30);
 }
 .primary:disabled{
@@ -26,19 +28,28 @@
     color: $Color-1;
     border-radius: 4px;
     font-family: THICCCBOI;
-    font-size: 18px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 700;
     line-height: 111.111%;
     border: none;
     cursor: pointer;
+    padding: 20px 24px;
 }
 .secondary:hover{
     color: $Red-400;
 }
 .secondary:focus{
+    padding: 16px 20px;
     border: 4px solid rgba(255, 255, 255, 0.30);
 }
 .secondary:disabled{
     opacity: 0.6;
+}
+
+.registration{
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

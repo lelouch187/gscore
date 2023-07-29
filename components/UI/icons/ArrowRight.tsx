@@ -11,16 +11,16 @@ export const ArrowRight = ({ width, height }: IconPropsType) => {
       <path
         d="M12.5391 3.53918L21 12.0001L12.5391 20.4609"
         stroke="white"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M20.9999 12L3 12"
         stroke="white"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

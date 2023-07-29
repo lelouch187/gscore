@@ -2,12 +2,14 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { gscoreApi } from './services';
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
 import ProductsReducer from './slice/productsSlice';
+import UserReducer from './slice/userSlice';
 import { persistStore, persistReducer, PERSIST } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 const rootReducer = combineReducers({
   products: ProductsReducer,
+  user: UserReducer,
 });
 
 const persistConfig = {
