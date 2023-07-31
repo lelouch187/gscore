@@ -20,10 +20,13 @@ export const userSlice = createSlice({
     setUser(state, { payload }: PayloadAction<successLoginType>) {
       return payload;
     },
+    logoutUser(state) {
+      return initialState;
+    },
   },
 });
 
-export const { setUser } = userSlice.actions;
+export const { setUser, logoutUser } = userSlice.actions;
 
 export const selectGetUser = (state: RootState) => state.persistedReducer.user;
 

@@ -40,7 +40,7 @@ export default function Login() {
       })
       .catch((error: ErrorRegistrationType) => {
         console.log(error);
-        setError(error.data.message);
+        setError(error?.data.message);
       })
       .finally(() => {
         setLoading(false);

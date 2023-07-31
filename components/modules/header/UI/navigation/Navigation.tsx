@@ -6,12 +6,14 @@ import { Popup } from '../popup/Popup';
 import { useGetUserQuery } from '@/store/services';
 import { ChevronDown } from '@/components/UI/icons/ChevronDown';
 import { routes } from '@/variables/routes';
+import { useAppSelector } from '@/store';
+import { selectGetUser } from '@/store/slice/userSlice';
 
 export const Navigation = () => {
-  const { data: user, isLoading, error } = useGetUserQuery(null);
+  const user = useAppSelector(selectGetUser);
   const [isActive, setActive] = useState(false);
 
-  if (isLoading || error) {
+  if (!user.token) {
     return null;
   }
 
@@ -21,12 +23,12 @@ export const Navigation = () => {
         My subscriptions
       </Link>
       <div onClick={() => setActive((prev) => !prev)} className={s.name}>
-        {user?.username}
+        {user.user.username}
         <span className={isActive ? `${s.arrow} ${s.active}` : `${s.arrow}`}>
           <ChevronDown width="24" height="24" />
         </span>
       </div>
-      {isActive && <Popup />}
+      {isActive && <Popup setActive={setActive} />}
     </nav>
   );
 };

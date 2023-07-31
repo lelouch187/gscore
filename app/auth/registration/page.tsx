@@ -8,11 +8,17 @@ import '../../../components/UI/MyButton/myButton.scss';
 import '../../../components/UI/MyInput/myInput.scss';
 import { useForm } from 'react-hook-form';
 import { useRegistrationMutation } from '@/store/services';
-import { ErrorRegistrationType, registrationUserType } from '@/store/types';
+import {
+  ErrorRegistrationType,
+  registrationUserType,
+  successLoginType,
+} from '@/store/types';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { routes } from '@/variables/routes';
 import Link from 'next/link';
+import { useAppDispatch } from '@/store';
+import { setUser } from '@/store/slice/userSlice';
 
 export default function Registration() {
   const {
@@ -21,6 +27,7 @@ export default function Registration() {
     formState: { errors },
   } = useForm<registrationUserType>();
   const [registration] = useRegistrationMutation();
+  const dispatch = useAppDispatch();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -30,8 +37,9 @@ export default function Registration() {
     setLoading(true);
     await registration(user)
       .unwrap()
-      .then(() => {
-        router.push(routes.login);
+      .then((resp) => {
+        dispatch(setUser(resp as unknown as successLoginType));
+        router.push(routes.checkout);
       })
       .catch((error: ErrorRegistrationType) => {
         setError(error.data.message);

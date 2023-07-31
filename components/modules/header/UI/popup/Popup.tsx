@@ -2,12 +2,27 @@
 import Link from 'next/link';
 import s from './popup.module.scss';
 import React from 'react';
-import Image from 'next/image';
 import { Settings } from '@/components/UI/icons/settings';
 import { Logout } from '@/components/UI/icons/Logout';
 import { routes } from '@/variables/routes';
+import { useAppDispatch } from '@/store';
+import { logoutUser } from '@/store/slice/userSlice';
+import { useRouter } from 'next/navigation';
 
-export const Popup = () => {
+type PopupPropsType = {
+  setActive: (item: boolean) => void;
+};
+
+export const Popup = ({ setActive }: PopupPropsType) => {
+  const diptach = useAppDispatch();
+  const router = useRouter();
+
+  const logout = () => {
+    diptach(logoutUser());
+    setActive(false);
+    router.push(routes.registration);
+  };
+
   return (
     <nav className={s.nav}>
       <ul className={s.menu}>
@@ -17,7 +32,7 @@ export const Popup = () => {
             Settings
           </Link>
         </li>
-        <li className={s.menu__link}>
+        <li onClick={logout} className={s.menu__link}>
           <Logout width="24" height="24" />
           Logout
         </li>

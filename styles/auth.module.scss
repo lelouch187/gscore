@@ -35,6 +35,7 @@
     flex-direction: column;
     gap:24px;
     width: 620px;
+    margin-bottom: 228px;
 }
 }
 .registration__link{
@@ -46,4 +47,71 @@
     line-height: 112.5%;
     text-decoration: none;
     color: $Color-1;
+}
+.checkout{
+    color: $Color-100;
+    width: 620px;
+    &__title{
+        font-family: THICCCBOI;
+        font-size: 44px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 122.727%;
+        margin-bottom: 32px;
+    }
+    &__accordion{
+        background-color: $Color-700;
+        margin-bottom: 24px;
+    }
+    &__total{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 48px;
+        span{
+            color: var(--neutral-colors-100, #FFF);
+            text-align: center;
+            font-feature-settings: 'clig' off, 'liga' off;
+            font-family: THICCCBOI;
+            font-size: 28px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 142.857%;
+        }
+    }
+}
+.accordion__title{
+    padding: 48px 72px 32px 32px;
+    border-bottom: 1px solid $Color-500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span{
+        color: $Color-100;
+        font-feature-settings: 'clig' off, 'liga' off;
+        font-family: THICCCBOI;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 141.667%;
+    }
+}
+.accordion__item{
+    padding: 32px 48px 48px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span{
+        color: $Color-100;
+        font-feature-settings: 'clig' off, 'liga' off;
+        font-family: THICCCBOI;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 158.333%;
+        display: flex;
+        align-items: center;
+    }
+}
+.accordion__price{
+    margin-right: 9px;
 }
