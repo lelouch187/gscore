@@ -56,3 +56,13 @@ export type registrationResultType = SuccessRegistrationType &
   ErrorRegistrationType;
 
 export type loginResultType = successLoginType & ErrorRegistrationType;
+
+export type changeInfoType = {
+  email: string;
+  username: string;
+};
+
+export type changePasswordType = {
+  currentPassword: string;
+  newPassword: string;
+};

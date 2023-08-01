@@ -18,6 +18,9 @@ export default function Checkout() {
   if (!token) {
     router.push(routes.registration);
   }
+  if (!productCard) {
+    router.push(routes.chooseCard);
+  }
 
   return (
     <div className={s.checkout}>

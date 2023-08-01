@@ -4,4 +4,5 @@ export enum routes {
   subscriptions = '/subscriptions',
   settings = '/settings',
   checkout = '/auth/checkout',
+  chooseCard = '/',
 }

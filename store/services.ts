@@ -2,6 +2,8 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type {
   ProductCardType,
   UserType,
+  changeInfoType,
+  changePasswordType,
   loginResultType,
   loginUserType,
   registrationResultType,
@@ -53,6 +55,30 @@ export const gscoreApi = createApi({
         body: user,
       }),
     }),
+    changeInfo: builder.mutation<any, changeInfoType>({
+      query: (info) => ({
+        url: 'users',
+        method: 'PATCH',
+        body: info,
+      }),
+      // transformResponse: (response: {
+      //   data: { email: string; username: string };
+      // }) => {
+      //   response.data.username;
+      // },
+    }),
+    changePassword: builder.mutation<any, changePasswordType>({
+      query: (passwords) => ({
+        url: 'users/update-password',
+        method: 'PATCH',
+        body: passwords,
+      }),
+      // transformResponse: (response: {
+      //   data: { email: string; username: string };
+      // }) => {
+      //   response.data.username;
+      // },
+    }),
   }),
 });
 
@@ -61,4 +87,6 @@ export const {
   useGetUserQuery,
   useRegistrationMutation,
   useLoginMutation,
+  useChangePasswordMutation,
+  useChangeInfoMutation,
 } = gscoreApi;
