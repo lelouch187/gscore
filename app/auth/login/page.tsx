@@ -35,7 +35,11 @@ export default function Login() {
     await login(user)
       .unwrap()
       .then((resp) => {
-        dispatch(setUser(resp as unknown as successLoginType));
+        const {
+          token,
+          user: { username },
+        } = resp;
+        dispatch(setUser({ token, username }));
         router.push(routes.checkout);
       })
       .catch((error: ErrorRegistrationType) => {

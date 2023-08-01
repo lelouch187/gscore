@@ -6,18 +6,18 @@ import { useGetUserQuery } from '@/store/services';
 import { Colors } from '@/variables/colors';
 import { CheckCircle } from '@/components/UI/icons/CheckCircle';
 import { routes } from '@/variables/routes';
-import { useAppDispatch } from '@/store';
+import { useAppDispatch, useAppSelector } from '@/store';
 import { selectProduct } from '@/store/slice/productsSlice';
+import { selectGetUser } from '@/store/slice/userSlice';
 
 type CardItemProps = {
   card: ProductCardType;
 };
 
 export const CardItem = ({ card }: CardItemProps) => {
-  const { data: user, error } = useGetUserQuery(null);
+  const user = useAppSelector(selectGetUser);
   const dispatch = useAppDispatch();
   const router = useRouter();
-
   const classBtn =
     card.id === 2
       ? `${s.card__buttonRed} ${Colors.secondary}`
@@ -25,7 +25,9 @@ export const CardItem = ({ card }: CardItemProps) => {
 
   const hanldeSelectPropduct = () => {
     dispatch(selectProduct(card));
-    if (error) {
+    if (user.username) {
+      router.push(routes.checkout);
+    } else {
       router.push(routes.registration);
     }
   };

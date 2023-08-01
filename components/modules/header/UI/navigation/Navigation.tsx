@@ -23,7 +23,7 @@ export const Navigation = () => {
         My subscriptions
       </Link>
       <div onClick={() => setActive((prev) => !prev)} className={s.name}>
-        {user.user.username}
+        {user.username}
         <span className={isActive ? `${s.arrow} ${s.active}` : `${s.arrow}`}>
           <ChevronDown width="24" height="24" />
         </span>

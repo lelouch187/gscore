@@ -1,23 +1,21 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { loginUserType, successLoginType } from '../types';
 import { RootState } from '../index';
 
-interface InitialUserState extends successLoginType {}
+interface InitialUserState {
+  token: string;
+  username: string;
+}
 
 const initialState: InitialUserState = {
   token: '',
-  user: {
-    id: 0,
-    email: '',
-    username: '',
-  },
+  username: '',
 };
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setUser(state, { payload }: PayloadAction<successLoginType>) {
+    setUser(state, { payload }: PayloadAction<InitialUserState>) {
       return payload;
     },
     logoutUser(state) {

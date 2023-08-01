@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type {
   ProductCardType,
   UserType,
+  loginResultType,
   loginUserType,
   registrationResultType,
   registrationUserType,
@@ -10,7 +11,6 @@ import { HYDRATE } from 'next-redux-wrapper';
 
 export const gscoreApi = createApi({
   reducerPath: 'gscoreApi',
-  tagTypes: ['USERS'],
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://internship.purrweb.site/api/',
     prepareHeaders(headers, { getState }) {
@@ -35,7 +35,6 @@ export const gscoreApi = createApi({
     }),
     getUser: builder.query<UserType, null>({
       query: () => 'users/me',
-      providesTags: (result) => ['USERS'],
     }),
     registration: builder.mutation<
       registrationResultType,
@@ -46,15 +45,13 @@ export const gscoreApi = createApi({
         method: 'POST',
         body: user,
       }),
-      invalidatesTags: ['USERS'],
     }),
-    login: builder.mutation<registrationResultType, loginUserType>({
+    login: builder.mutation<loginResultType, loginUserType>({
       query: (user) => ({
         url: 'users/sign-in',
         method: 'POST',
         body: user,
       }),
-      invalidatesTags: ['USERS'],
     }),
   }),
 });

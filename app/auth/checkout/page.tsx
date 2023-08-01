@@ -8,9 +8,11 @@ import { useRouter } from 'next/navigation';
 import { useAppSelector } from '@/store';
 import { selectGetUser } from '@/store/slice/userSlice';
 import { routes } from '@/variables/routes';
+import { selectGetProduct } from '@/store/slice/productsSlice';
 
 export default function Checkout() {
   const router = useRouter();
+  const productCard = useAppSelector(selectGetProduct);
   const { token } = useAppSelector(selectGetUser);
 
   if (!token) {
@@ -26,16 +28,18 @@ export default function Checkout() {
           <span>Price</span>
         </div>
         <div className={s.accordion__item}>
-          <span>Single site license</span>
+          <span>{productCard?.sitesCount} site license</span>
           <span>
-            <span className={s.accordion__price}>$77</span>{' '}
+            <span className={s.accordion__price}>
+              {productCard?.prices[0].price}
+            </span>{' '}
             <Bucket width="24" height="24" />
           </span>
         </div>
       </div>
       <div className={s.checkout__total}>
         <span>Total:</span>
-        <span>$77</span>
+        <span>{productCard?.prices[0].price}</span>
       </div>
       <MyButton className="primary checkout" disabled={false} isLoading={false}>
         Purchase
