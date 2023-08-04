@@ -9,6 +9,7 @@ import type {
   registrationResultType,
   registrationUserType,
   subscribeIdType,
+  subscriptionsType,
 } from './types';
 import { HYDRATE } from 'next-redux-wrapper';
 
@@ -87,6 +88,9 @@ export const gscoreApi = createApi({
         body: { productId, subscribeId },
       }),
     }),
+    getSubscriptions: builder.query<subscriptionsType, null>({
+      query: () => 'subscribe/self',
+    }),
   }),
 });
 
@@ -98,4 +102,5 @@ export const {
   useChangePasswordMutation,
   useChangeInfoMutation,
   useBySubscribeMutation,
+  useGetSubscriptionsQuery,
 } = gscoreApi;

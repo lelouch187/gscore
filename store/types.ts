@@ -76,3 +76,25 @@ export type subscribeIdType = {
     currentPeriodEnd: number;
   };
 };
+
+export type subscriptionsType = subscriptionType[];
+
+export interface subscriptionType {
+  id: number;
+  userId: number;
+  productId: number;
+  currentPeriodStart: string;
+  currentPeriodEnd: string;
+  status: string;
+  product: ProductCardType;
+  codes: CodeType[];
+}
+
+export interface CodeType {
+  id: number;
+  code: string;
+  origin?: string;
+  status: string;
+  subscribeId: number;
+  userId: number;
+}
