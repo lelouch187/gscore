@@ -12,6 +12,7 @@
     border: none;
     cursor: pointer;
     padding: 20px 24px;
+    width: 100%;
 }
 .primary:hover{
     background-color: $Red-400;
@@ -35,6 +36,7 @@
     border: none;
     cursor: pointer;
     padding: 20px 24px;
+    width: 100%;
 }
 .secondary:hover{
     color: $Red-400;
@@ -63,4 +65,12 @@
 }
 .user{
     width: 168px;
+}
+.subscriptions{
+    width: 152px;
+    height: 72px;
+}
+.out{
+    width: 164px;
+    height: 70px;
 }

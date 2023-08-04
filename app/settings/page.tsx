@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import { useAppSelector } from '@/store';
 import { selectGetUser } from '@/store/slice/userSlice';
 import { routes } from '@/variables/routes';
-import { useResetToken } from '@/hooks';
+import { useResetToken } from '@/hooks/resetToken';
 
 export default function Settings() {
   const [activeTub, changeActiveTab] = useState(0);

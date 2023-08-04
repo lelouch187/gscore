@@ -7,6 +7,7 @@ import { Colors } from '@/variables/colors';
 import { useChangePasswordMutation } from '@/store/services';
 import { UNAUTHORIZED } from '@/variables/constant';
 import { useState } from 'react';
+import { ErrorRegistrationType } from '@/store/types';
 
 type FormValuesType = {
   currentPassword: string;
@@ -17,9 +18,8 @@ type FormPasswordPropsType = {
 };
 
 export const FormPassword = ({ resetUser }: FormPasswordPropsType) => {
-  const [changePasswrod] = useChangePasswordMutation();
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [changePasswrod, { isLoading, error }] =
+    useChangePasswordMutation<any>();
   const {
     register,
     handleSubmit,
@@ -27,17 +27,13 @@ export const FormPassword = ({ resetUser }: FormPasswordPropsType) => {
   } = useForm<FormValuesType>();
 
   const onSubmit = handleSubmit(async (data) => {
-    setLoading(true);
     await changePasswrod(data)
       .unwrap()
-      .catch((error) => {
-        if (error.statuscode === UNAUTHORIZED) {
+      .catch((error: ErrorRegistrationType) => {
+        if (error.statusCode === UNAUTHORIZED) {
           resetUser();
-        } else {
-          setError(error.data.message);
         }
-      })
-      .finally(() => setLoading(false));
+      });
   });
 
   return (
@@ -71,11 +67,11 @@ export const FormPassword = ({ resetUser }: FormPasswordPropsType) => {
       )}
       <MyButton
         className={`${Colors.primary} user`}
-        isLoading={loading}
+        isLoading={isLoading}
         disabled={false}>
         Save
       </MyButton>
-      <span className="error_message">{error}</span>
+      {error && <span className="error_message">{error.data.message}</span>}
     </form>
   );
 };

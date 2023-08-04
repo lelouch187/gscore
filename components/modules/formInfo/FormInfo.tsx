@@ -19,9 +19,7 @@ type FormInfoPropsType = {
 };
 
 export const FormInfo = ({ resetUser }: FormInfoPropsType) => {
-  const [changeInfo] = useChangeInfoMutation();
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [changeInfo, { error, isLoading }] = useChangeInfoMutation<any>();
   const dispatch = useDispatch();
   const {
     register,
@@ -31,7 +29,6 @@ export const FormInfo = ({ resetUser }: FormInfoPropsType) => {
   } = useForm<FormValuesType>();
 
   const onSubmit = handleSubmit(async (data) => {
-    setLoading(true);
     await changeInfo(data)
       .unwrap()
       .then((resp) => {
@@ -40,13 +37,10 @@ export const FormInfo = ({ resetUser }: FormInfoPropsType) => {
       .catch((error) => {
         if (error.statuscode === UNAUTHORIZED) {
           resetUser();
-        } else {
-          setError(error.data.message);
         }
       })
       .finally(() => {
         reset();
-        setLoading(false);
       });
   });
 
@@ -76,11 +70,11 @@ export const FormInfo = ({ resetUser }: FormInfoPropsType) => {
       )}
       <MyButton
         className={`${Colors.primary} user`}
-        isLoading={loading}
+        isLoading={isLoading}
         disabled={false}>
         Save
       </MyButton>
-      <span className="error_message">{error}</span>
+      {error && <span className="error_message">{error.data.message}</span>}
     </form>
   );
 };

@@ -26,27 +26,17 @@ export default function Registration() {
     handleSubmit,
     formState: { errors },
   } = useForm<registrationUserType>();
-  const [registration] = useRegistrationMutation();
+  const [registration, { isLoading, error }] = useRegistrationMutation<any>();
   const dispatch = useAppDispatch();
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const onSubmit = handleSubmit(async (user) => {
-    setError('');
-    setLoading(true);
     await registration(user)
       .unwrap()
       .then((resp) => {
         const { username, token } = resp;
         dispatch(setUser({ username, token }));
         router.push(routes.checkout);
-      })
-      .catch((error: ErrorRegistrationType) => {
-        setError(error.data.message);
-      })
-      .finally(() => {
-        setLoading(false);
       });
   });
 
@@ -97,11 +87,11 @@ export default function Registration() {
         <MyButton
           type="submit"
           className={`${Colors.primary} registration`}
-          isLoading={loading}
+          isLoading={isLoading}
           disabled={false}>
           Send password
         </MyButton>
-        <span className="error_message">{error}</span>
+        {error && <span className="error_message">{error.data.message}</span>}
         <p className={s.registration__subtitle}>
           Have an account?
           <Link href="/auth/login" className={s.registration__link}>

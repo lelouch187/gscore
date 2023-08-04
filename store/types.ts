@@ -1,3 +1,5 @@
+import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query';
+
 export type PricesType = {
   id: number;
   isActive: boolean;
@@ -65,4 +67,12 @@ export type changeInfoType = {
 export type changePasswordType = {
   currentPassword: string;
   newPassword: string;
+};
+export type subscribeIdType = {
+  subscribe: {
+    id: number;
+    userId: number;
+    currentPeriodStart: number;
+    currentPeriodEnd: number;
+  };
 };

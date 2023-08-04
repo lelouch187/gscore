@@ -8,17 +8,35 @@ import { useRouter } from 'next/navigation';
 import { useAppSelector } from '@/store';
 import { selectGetUser } from '@/store/slice/userSlice';
 import { routes } from '@/variables/routes';
-import { selectGetProduct } from '@/store/slice/productsSlice';
+import { selectProductInfo } from '@/store/slice/productsSlice';
+import { useBySubscribeMutation } from '@/store/services';
+import { useResetToken } from '@/hooks/resetToken';
+import { UNAUTHORIZED } from '@/variables/constant';
 
 export default function Checkout() {
   const router = useRouter();
-  const productCard = useAppSelector(selectGetProduct);
+  const { selectedProduct, subscribeId } = useAppSelector(selectProductInfo);
   const { token } = useAppSelector(selectGetUser);
+  const [bySubscribe, { error: subscribeError, isLoading: subscribeLoading }] =
+    useBySubscribeMutation<any>();
+  const resetToken = useResetToken();
+
+  const handlePurchaseSubscribe = async () => {
+    if (selectedProduct) {
+      await bySubscribe(selectedProduct?.id)
+        .then(() => router.push(routes.subscription))
+        .catch((err) => {
+          if (err.statusCode === UNAUTHORIZED) {
+            resetToken();
+          }
+        });
+    }
+  };
 
   if (!token) {
     router.push(routes.registration);
   }
-  if (!productCard) {
+  if (!selectedProduct) {
     router.push(routes.chooseCard);
   }
 
@@ -31,10 +49,10 @@ export default function Checkout() {
           <span>Price</span>
         </div>
         <div className={s.accordion__item}>
-          <span>{productCard?.sitesCount} site license</span>
+          <span>{selectedProduct?.sitesCount} site license</span>
           <span>
             <span className={s.accordion__price}>
-              {productCard?.prices[0].price}
+              ${selectedProduct?.prices[0].price}
             </span>{' '}
             <Bucket width="24" height="24" />
           </span>
@@ -42,11 +60,27 @@ export default function Checkout() {
       </div>
       <div className={s.checkout__total}>
         <span>Total:</span>
-        <span>{productCard?.prices[0].price}</span>
+        <span>${selectedProduct?.prices[0].price}</span>
       </div>
-      <MyButton className="primary checkout" disabled={false} isLoading={false}>
-        Purchase
-      </MyButton>
+      {subscribeId ? (
+        <MyButton
+          className="primary checkout"
+          disabled={false}
+          isLoading={false}>
+          Upgrade
+        </MyButton>
+      ) : (
+        <MyButton
+          onClick={handlePurchaseSubscribe}
+          className="primary checkout"
+          disabled={false}
+          isLoading={subscribeLoading}>
+          Purchase
+        </MyButton>
+      )}
+      {subscribeError && (
+        <span className="error_message">{subscribeError.data.message}</span>
+      )}
     </div>
   );
 }

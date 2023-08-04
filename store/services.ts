@@ -8,6 +8,7 @@ import type {
   loginUserType,
   registrationResultType,
   registrationUserType,
+  subscribeIdType,
 } from './types';
 import { HYDRATE } from 'next-redux-wrapper';
 
@@ -61,11 +62,6 @@ export const gscoreApi = createApi({
         method: 'PATCH',
         body: info,
       }),
-      // transformResponse: (response: {
-      //   data: { email: string; username: string };
-      // }) => {
-      //   response.data.username;
-      // },
     }),
     changePassword: builder.mutation<any, changePasswordType>({
       query: (passwords) => ({
@@ -73,11 +69,23 @@ export const gscoreApi = createApi({
         method: 'PATCH',
         body: passwords,
       }),
-      // transformResponse: (response: {
-      //   data: { email: string; username: string };
-      // }) => {
-      //   response.data.username;
-      // },
+    }),
+    bySubscribe: builder.mutation<subscribeIdType, number>({
+      query: (priceId) => ({
+        url: 'payments/buy',
+        method: 'POST',
+        body: { priceId },
+      }),
+    }),
+    upgradeSubscribe: builder.mutation<
+      subscribeIdType,
+      { productId: number; subscribeId: number }
+    >({
+      query: ({ productId, subscribeId }) => ({
+        url: 'subscribe/change-product',
+        method: 'POST',
+        body: { productId, subscribeId },
+      }),
     }),
   }),
 });
@@ -89,4 +97,5 @@ export const {
   useLoginMutation,
   useChangePasswordMutation,
   useChangeInfoMutation,
+  useBySubscribeMutation,
 } = gscoreApi;

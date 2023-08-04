@@ -4,13 +4,8 @@ import MyInput from '@/components/UI/MyInput/MyInput';
 import s from '../../../styles/auth.module.scss';
 import { MyButton } from '@/components/UI/MyButton/MyButton';
 import { useForm } from 'react-hook-form';
-import {
-  ErrorRegistrationType,
-  loginUserType,
-  successLoginType,
-} from '@/store/types';
+import { loginUserType } from '@/store/types';
 import { useAppDispatch } from '@/store';
-import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Colors } from '@/variables/colors';
 import { useLoginMutation } from '@/store/services';
@@ -24,14 +19,10 @@ export default function Login() {
     formState: { errors },
   } = useForm<loginUserType>();
   const dispatch = useAppDispatch();
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [login] = useLoginMutation();
-  const router = useRouter();
 
+  const [login, { error, isLoading }] = useLoginMutation<any>();
+  const router = useRouter();
   const onSubmit = handleSubmit(async (user) => {
-    setError('');
-    setLoading(true);
     await login(user)
       .unwrap()
       .then((resp) => {
@@ -41,13 +32,6 @@ export default function Login() {
         } = resp;
         dispatch(setUser({ token, username }));
         router.push(routes.checkout);
-      })
-      .catch((error: ErrorRegistrationType) => {
-        console.log(error);
-        setError(error?.data.message);
-      })
-      .finally(() => {
-        setLoading(false);
       });
   });
 
@@ -86,11 +70,11 @@ export default function Login() {
         <MyButton
           type="submit"
           className={`${Colors.primary} registration`}
-          isLoading={loading}
+          isLoading={isLoading}
           disabled={false}>
           Log in
         </MyButton>
-        <span className="error_message">{error}</span>
+        {error && <span className="error_message">{error.data.message}</span>}
       </form>
     </>
   );
