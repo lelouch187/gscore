@@ -26,7 +26,7 @@
 }
 .secondary{
     background-color: $Color-100;
-    color: $Color-1;
+    color: $Primary-1;
     border-radius: 4px;
     font-family: THICCCBOI;
     font-size: 16px;
@@ -39,6 +39,7 @@
     width: 100%;
 }
 .secondary:hover{
+    background-color: $Color-200;
     color: $Red-400;
 }
 .secondary:focus{
@@ -61,7 +62,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 290px;
+    margin-bottom: 5px;
 }
 .user{
     width: 168px;
@@ -73,4 +74,9 @@
 .out{
     width: 164px;
     height: 70px;
+}
+.btn__card{
+    width: 120px;
+    padding: 20px 24px;
+    margin: 32px 0 48px 32px;
 }

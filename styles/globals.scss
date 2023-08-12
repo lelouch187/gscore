@@ -26,4 +26,10 @@
       transform:rotate(360deg);
   }
 }
-
+.slick-track{
+  display: flex;
+}
+.error_message{
+  color: $Color-1;
+  font-size: 16px;
+}

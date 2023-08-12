@@ -1,0 +1,54 @@
+@import '/styles/variables.scss';
+
+.card{
+    font-family: THICCCBOI;
+    border-radius: 12px;
+    width: 620px;
+    margin-right: 10px;
+    background-color: $Color-700;
+    &__header{
+        width: 100%;
+        padding: 33px 64px 18px 32px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid $Color-500;
+    }
+    &__main{
+        display: flex;
+        justify-content: space-between;
+        padding: 32px 80px 0 32px;
+    }
+    &__left{
+        display: flex;
+        flex-direction: column;
+        flex: start;
+        text-align: left;
+    }
+    &__title{
+        margin-right: 20px;
+        margin-bottom: 12px;
+        font-size: 24px;
+        color: $Color-100;
+    }
+    &__subtitle{
+        color:$Color-500;
+        margin: 2px 0 25px 0;
+        font-size: 16px;
+    }
+    &__right{
+        font-size: 24px;
+        color:$Color-100
+    }
+}
+.header__title{
+    color: $Color-100;
+    font-size: 22px;
+}
+.btn__wrapper{
+    display: flex;
+    justify-content: left;
+}
+.disabled{
+    opacity: 0.6;
+}

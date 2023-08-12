@@ -1,10 +1,8 @@
-import { IconPropsType } from './types';
-
-export const Twitter = ({ width, height }: IconPropsType) => {
+export const Twitter = () => {
   return (
     <svg
-      width={width}
-      height={height}
+      width="36"
+      height="37"
       viewBox="0 0 36 37"
       fill="none"
       xmlns="http://www.w3.org/2000/svg">

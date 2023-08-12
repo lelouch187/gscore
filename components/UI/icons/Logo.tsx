@@ -1,10 +1,8 @@
-import { IconPropsType } from './types';
-
-export const Logo = ({ width, height }: IconPropsType) => {
+export const Logo = () => {
   return (
     <svg
-      width={width}
-      height={height}
+      width="171"
+      height="42"
       viewBox="0 0 171 42"
       fill="none"
       xmlns="http://www.w3.org/2000/svg">

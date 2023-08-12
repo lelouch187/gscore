@@ -1,0 +1,15 @@
+@import '/styles/variables.scss';
+
+.accordion{
+    background-color: $Color-700;
+    height: 130px;
+    position: relative;
+    display: flex;
+    width: 100%;
+    padding: 30px;
+    border-radius: 12px;
+    align-items: center;
+}
+.check__wrapper{
+    padding-top: 20px;
+}

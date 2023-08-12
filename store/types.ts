@@ -1,5 +1,3 @@
-import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query';
-
 export type PricesType = {
   id: number;
   isActive: boolean;
