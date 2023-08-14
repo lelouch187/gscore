@@ -15,6 +15,7 @@ import { routes } from '@/variables/routes';
 import Link from 'next/link';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { selectGetUser, setUser } from '@/store/slice/userSlice';
+import { EMAILVALIDATION } from '@/variables/constant';
 
 export default function Registration() {
   const user = useAppSelector(selectGetUser);
@@ -61,7 +62,7 @@ export default function Registration() {
           error={errors.email}
           {...register('email', {
             pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i,
+              value: EMAILVALIDATION,
               message: 'incorrect email',
             },
           })}
