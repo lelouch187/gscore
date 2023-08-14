@@ -42,10 +42,7 @@ export const gscoreApi = createApi({
     getUser: builder.query<UserType, null>({
       query: () => 'users/me',
     }),
-    registration: builder.mutation<
-      registrationResultType,
-      registrationUserType
-    >({
+    registration: builder.mutation<registrationResultType, registrationUserType>({
       query: (user) => ({
         url: 'users/sign-up',
         method: 'POST',
@@ -79,6 +76,7 @@ export const gscoreApi = createApi({
         method: 'POST',
         body: { priceId },
       }),
+      invalidatesTags: ['PRODUCT'],
     }),
     upgradeSubscribe: builder.mutation<
       subscribeIdType,
@@ -103,10 +101,7 @@ export const gscoreApi = createApi({
       }),
       invalidatesTags: ['PRODUCT'],
     }),
-    manageCode: builder.mutation<
-      CodeType,
-      { codesIds: number[]; subscribeId: number }
-    >({
+    manageCode: builder.mutation<CodeType, { codesIds: number[]; subscribeId: number }>({
       query: (payload) => ({
         url: 'code/manage',
         method: 'PUT',
