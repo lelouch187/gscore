@@ -5,7 +5,7 @@
     padding: 32px 0 390px;
     margin: 0 auto;
     &__title{
-        font-family: THICCCBOI;
+        font-family: var(--font-THICCCBOI);
         font-size: 44px;
         font-style: normal;
         font-weight: 700;
@@ -15,7 +15,7 @@
     &__text{
         color: var(--neutral-colors-100, #FFF);
         font-feature-settings: 'clig' off, 'liga' off;
-        font-family: THICCCBOI;
+        font-family: var(--font-THICCCBOI);
         font-size: 14px;
         font-style: normal;
         font-weight: 500;
@@ -36,7 +36,7 @@
     span{
         color: $Color-100;
         font-feature-settings: 'clig' off, 'liga' off;
-        font-family: THICCCBOI;
+        font-family: var(--font-THICCCBOI);
         font-size: 24px;
         font-style: normal;
         font-weight: 700;
@@ -51,7 +51,7 @@
     span{
         color: $Color-100;
         font-feature-settings: 'clig' off, 'liga' off;
-        font-family: THICCCBOI;
+        font-family: var(--font-THICCCBOI);
         font-size: 24px;
         font-style: normal;
         font-weight: 400;

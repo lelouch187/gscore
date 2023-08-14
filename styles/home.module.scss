@@ -12,7 +12,7 @@
         padding-top: 32px;
         text-align: center;
         color:$Color-100;
-        font-family: THICCCBOI;
+        font-family: var(--font-THICCCBOI);
         font-size: 44px;
         font-style: normal;
         font-weight: 700;
@@ -20,7 +20,7 @@
         margin-bottom: 98px;
     }
     &__text{
-        font-family: THICCCBOI;
+        font-family: var(--font-THICCCBOI);
         font-size: 18px;
         font-style: normal;
         font-weight: 400;
@@ -28,7 +28,7 @@
         color:$Color-100;
     }
     &__link{
-        font-family: THICCCBOI;
+        font-family: var(--font-THICCCBOI);
         font-size: 18px;
         font-style: normal;
         font-weight: 400;

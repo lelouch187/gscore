@@ -24,7 +24,7 @@
     &__title{
         color: $Color-500;
         padding-bottom: 10px;
-        font-family: THICCCBOI;
+        font-family: var(--font-THICCCBOI);
         font-size: 16px;
         font-style: normal;
         font-weight: 700;
@@ -45,7 +45,7 @@
         overflow: hidden;
         text-overflow: ellipsis;
         color: $Color-500;
-        font-family: THICCCBOI;
+        font-family: var(--font-THICCCBOI);
         font-size: 16px;
         font-style: normal;
         font-weight: 400;
@@ -65,7 +65,7 @@
     &__title{
         color: $Color-500;
         padding-bottom: 10px;
-        font-family: THICCCBOI;
+        font-family: var(--font-THICCCBOI);
         font-size: 16px;
         font-style: normal;
         font-weight: 700;
@@ -76,7 +76,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        font-family: THICCCBOI;
+        font-family: var(--font-THICCCBOI);
         font-size: 16px;
         font-style: normal;
         font-weight: 700;
@@ -107,7 +107,7 @@
     margin-bottom: 20px;
     color: $Color-500;
     padding-bottom: 10px;
-    font-family: THICCCBOI;
+    font-family: var(--font-THICCCBOI);
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
