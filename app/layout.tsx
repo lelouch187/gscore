@@ -6,7 +6,7 @@ import { Providers } from '@/store/provider';
 import localFont from 'next/font/local';
 
 const greatVibes = localFont({
-  src: './fonts/THICCCBOI-Regular.ttf',
+  src: './fonts/THICCCBOI-Medium.ttf',
   variable: '--font-THICCCBOI',
 });
 
