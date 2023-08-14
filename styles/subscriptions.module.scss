@@ -17,7 +17,7 @@
         font-size: 54px;
         font-style: normal;
         font-weight: 700;
-        line-height: 118.519%;
+        line-height: 118%;
     }
 }
 .slider__wrapper{
@@ -74,4 +74,18 @@
     margin-bottom: 50px;
     width: 86vw;
     min-width: max-content;
+}
+.select__domain{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 48px;
+}
+.select__text{
+    font-family: THICCCBOI;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 110%;
+    color: $Color-100;
 }

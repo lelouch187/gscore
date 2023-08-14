@@ -14,12 +14,11 @@ export const TabAuth = ({ text, index }: TabAuthPropsType) => {
   const pathname = usePathname();
 
   const currentIndex = () => {
-    if (pathname === routes.registration) {
-      return 0;
-    } else if (pathname === routes.login) {
-      return 1;
-    }
-    return 2;
+    return pathname === routes.registration
+      ? 0
+      : pathname === routes.login
+      ? 1
+      : 2;
   };
   const className = index <= currentIndex() ? Colors.active : Colors.default;
 

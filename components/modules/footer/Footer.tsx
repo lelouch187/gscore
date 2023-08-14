@@ -11,7 +11,7 @@ export const Footer = () => {
     <footer className={s.footer}>
       <div className="container">
         <div className={s.footer__top}>
-          <Logo width="170" height="42" />
+          <Logo />
           <p className={s.title}>
             Ut enim ad minim veniam quis nostrud exercitation ea commodo
           </p>
@@ -28,15 +28,15 @@ export const Footer = () => {
             </Link>
           </p>
           <div className={s.social}>
-            <a className={s.social__link} href="https://www.facebook.com">
-              <Facebook width="36" height="36" />
-            </a>
-            <a className={s.social__link} href="https://twitter.com">
-              <Twitter width="36" height="36" />
-            </a>
-            <a className={s.social__link} href="www.linkedin.com">
-              <LinkedIn width="36" height="36" />
-            </a>
+            <Link className={s.social__link} href="https://www.facebook.com">
+              <Facebook />
+            </Link>
+            <Link className={s.social__link} href="https://twitter.com">
+              <Twitter />
+            </Link>
+            <Link className={s.social__link} href="www.linkedin.com">
+              <LinkedIn />
+            </Link>
           </div>
         </div>
       </div>

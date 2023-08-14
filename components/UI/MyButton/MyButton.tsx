@@ -8,18 +8,20 @@ import { Loader } from '../icons/Loader';
 interface MyButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   isLoading: boolean;
   disabled: boolean;
+  loaderColor?: string;
 }
 
 export const MyButton = ({
   isLoading,
   disabled,
+  loaderColor,
   children,
   ...props
 }: MyButtonProps) => {
   return (
     <button type="submit" disabled={disabled} {...props}>
       {isLoading ? (
-        <Loader className="animate" width="24" height="18" />
+        <Loader color={loaderColor} className="animate" />
       ) : (
         children
       )}

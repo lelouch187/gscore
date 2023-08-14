@@ -1,17 +1,21 @@
+import { InputHTMLAttributes } from 'react';
+import { Check } from '../icons/Check';
 import './myCheckbox.scss';
 
-const MyCheckbox = () => {
+const MyCheckbox = (props: InputHTMLAttributes<HTMLInputElement>) => {
   return (
-    <>
+    <div className="checkbox">
+      <div className="checkbox__wrapper">
+        <Check />
+      </div>
       <input
-        className="checkbox"
+        {...props}
+        className="checkbox__input"
         type="checkbox"
-        id="happy"
-        name="happy"
-        value="yes"
+        name="checkbox"
       />
-      <label htmlFor="happy">Happy</label>
-    </>
+      <label htmlFor="checkbox">{props.value}</label>
+    </div>
   );
 };
 export default MyCheckbox;

@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type {
+  CodeType,
   ProductCardType,
   UserType,
   changeInfoType,
@@ -94,6 +95,25 @@ export const gscoreApi = createApi({
       query: () => 'subscribe/self',
       providesTags: (result) => ['PRODUCT'],
     }),
+    activateCode: builder.mutation<CodeType, { code: string }>({
+      query: (payload) => ({
+        url: 'code/activate',
+        method: 'POST',
+        body: payload,
+      }),
+      invalidatesTags: ['PRODUCT'],
+    }),
+    manageCode: builder.mutation<
+      CodeType,
+      { codesIds: number[]; subscribeId: number }
+    >({
+      query: (payload) => ({
+        url: 'code/manage',
+        method: 'PUT',
+        body: payload,
+      }),
+      invalidatesTags: ['PRODUCT'],
+    }),
   }),
 });
 
@@ -107,4 +127,6 @@ export const {
   useBySubscribeMutation,
   useGetSubscriptionsQuery,
   useUpgradeSubscribeMutation,
+  useActivateCodeMutation,
+  useManageCodeMutation,
 } = gscoreApi;

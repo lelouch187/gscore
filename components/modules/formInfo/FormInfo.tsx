@@ -5,7 +5,7 @@ import { MyButton } from '@/components/UI/MyButton/MyButton';
 import { useForm } from 'react-hook-form';
 import { Colors } from '@/variables/colors';
 import { useChangeInfoMutation } from '@/store/services';
-import { UNAUTHORIZED } from '@/variables/constant';
+import { EMAILVALIDATION, UNAUTHORIZED } from '@/variables/constant';
 import { useDispatch } from 'react-redux';
 import { changeNameUser } from '@/store/slice/userSlice';
 import { useState } from 'react';
@@ -58,7 +58,7 @@ export const FormInfo = ({ resetUser }: FormInfoPropsType) => {
       <MyInput
         {...register('email', {
           pattern: {
-            value: /^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i,
+            value: EMAILVALIDATION,
             message: 'incorrect email',
           },
         })}

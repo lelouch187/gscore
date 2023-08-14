@@ -3,7 +3,10 @@ import { MyButton } from '@/components/UI/MyButton/MyButton';
 import s from '../../styles/subscriptions.module.scss';
 import { Colors } from '@/variables/colors';
 import { NoSubscriptions } from '@/components/modules/noSubscriptions/NoSubscriptions';
-import { useGetSubscriptionsQuery } from '@/store/services';
+import {
+  useGetSubscriptionsQuery,
+  useManageCodeMutation,
+} from '@/store/services';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAppDispatch, useAppSelector } from '@/store';
@@ -20,17 +23,25 @@ export default function Subscriptions() {
   const dispatch = useAppDispatch();
   const { username } = useAppSelector(selectGetUser);
   const { data: subscriptions, isLoading } = useGetSubscriptionsQuery(null);
+  const [manageCodes, { isLoading: manageLoading, error }] =
+    useManageCodeMutation<any>();
   const [productId, setProductId] = useState(0);
   const [subscribeId, setSubscribeId] = useState(0);
+  const [activeCodes, setActiveCodes] = useState(-1);
   const [activeCard, setActiveCard] = useState(0);
-  const router = useRouter();
+  const [codesIds, setCodesIds] = useState<number[]>([]);
   const cardsNumber = subscriptions ? subscriptions.length : 0;
+  const codesId: number[] = [];
+  let slider: Slider | null;
+  const router = useRouter();
+
   const settings: Settings = {
     infinite: false,
     speed: 500,
     slidesToScroll: 1,
     afterChange(currentSlide) {
       setActiveCard(currentSlide);
+      setActiveCodes(-1);
       if (subscriptions) {
         setProductId(subscriptions[currentSlide].productId);
         setSubscribeId(subscriptions[currentSlide].codes[0].subscribeId);
@@ -39,17 +50,16 @@ export default function Subscriptions() {
     variableWidth: true,
     arrows: false,
   };
-  let slider: Slider | null;
 
   if (!username) {
     router.push(routes.registration);
   }
+
   useEffect(() => {
     if (subscriptions) {
       setProductId(subscriptions[0].productId);
       setSubscribeId(subscriptions[0].codes[0].subscribeId);
     }
-    pushCodes();
   }, [subscriptions, isLoading]);
 
   const handleUpgradeProduct = () => {
@@ -57,12 +67,30 @@ export default function Subscriptions() {
     router.push(routes.chooseCard);
   };
 
-  const codesId: number[] = [];
+  const handleSelectCodes = (codeId: number, checked: boolean) => {
+    if (!checked) {
+      setCodesIds((codesIds) => [...codesIds, codeId]);
+    } else {
+      setCodesIds((codesIds) => codesIds.filter((id) => id !== codeId));
+    }
+  };
+
+  const handleConfirm = async () => {
+    if (subscriptions)
+      await manageCodes({
+        codesIds,
+        subscribeId: subscriptions[activeCard].id,
+      });
+  };
+
   const pushCodes = () => {
     if (subscriptions) {
       subscriptions[activeCard].codes.map((codeId) => codesId.push(codeId.id));
+      codesId.sort((a, b) => a - b);
     }
   };
+
+  pushCodes();
 
   return (
     <div className={s.subscriptions}>
@@ -86,7 +114,7 @@ export default function Subscriptions() {
                 {subscriptions.map((subscription, index) => (
                   <Card
                     isDisabled={activeCard === index}
-                    setActiveCard={() => {}}
+                    setActiveCard={() => setActiveCodes(index)}
                     key={subscription.id}
                     subscription={subscription}
                   />
@@ -115,20 +143,48 @@ export default function Subscriptions() {
                 </button>
               </div>
             </div>
-            <div className={s.codes}>
-              {codesId.map((id, index) => {
-                const currentCode = subscriptions[activeCard].codes.find(
-                  (code) => code.id === id,
-                );
-                const isChecked = codesId.some((codeId) => codeId === id);
-                const spareCode = subscriptions[activeCard].codes[0];
-                return (
-                  <div key={index} className={s.code}>
-                    <Accordion />
-                  </div>
-                );
-              })}
-            </div>
+            {activeCodes > -1 ? (
+              <div className={s.codes}>
+                {codesId.map((id, index) => {
+                  const currentCode = subscriptions[activeCodes].codes.find(
+                    (code) => code.id === id,
+                  );
+                  const isChecked = codesIds.some((codeId) => codeId === id);
+                  const spareCode = subscriptions[activeCodes].codes[0];
+                  return (
+                    <div key={index} className={s.code}>
+                      <Accordion
+                        selectCodes={(checked: boolean) => {
+                          handleSelectCodes(id, checked);
+                        }}
+                        checked={isChecked}
+                        cardCode={currentCode || spareCode}
+                      />
+                    </div>
+                  );
+                })}
+                <div className={s.select__domain}>
+                  <p className={s.select__text}>
+                    Select the domains you want to keep
+                  </p>
+                  <MyButton
+                    onClick={handleConfirm}
+                    className={`${Colors.primary} domain`}
+                    disabled={
+                      !!(
+                        codesIds.length !==
+                        subscriptions[activeCard]?.product.sitesCount
+                      )
+                    }
+                    isLoading={manageLoading}>
+                    Сonfirm
+                  </MyButton>
+                </div>
+                {error && (
+                  <span className="error_message">{error.data.message}</span>
+                )}
+              </div>
+            ) : null}
           </>
         ) : (
           <NoSubscriptions />

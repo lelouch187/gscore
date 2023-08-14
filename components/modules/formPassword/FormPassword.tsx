@@ -18,7 +18,7 @@ type FormPasswordPropsType = {
 };
 
 export const FormPassword = ({ resetUser }: FormPasswordPropsType) => {
-  const [changePasswrod, { isLoading, error }] =
+  const [changePassword, { isLoading, error }] =
     useChangePasswordMutation<any>();
   const {
     register,
@@ -27,7 +27,7 @@ export const FormPassword = ({ resetUser }: FormPasswordPropsType) => {
   } = useForm<FormValuesType>();
 
   const onSubmit = handleSubmit(async (data) => {
-    await changePasswrod(data)
+    await changePassword(data)
       .unwrap()
       .catch((error: ErrorRegistrationType) => {
         if (error.statusCode === UNAUTHORIZED) {

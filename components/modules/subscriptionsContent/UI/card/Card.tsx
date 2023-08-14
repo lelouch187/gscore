@@ -11,7 +11,7 @@ type CardPropsType = {
   setActiveCard: () => void;
 };
 
-const Card = ({ subscription, isDisabled }: CardPropsType) => {
+const Card = ({ subscription, isDisabled, setActiveCard }: CardPropsType) => {
   const date = getDate(subscription.currentPeriodEnd);
 
   return (
@@ -31,6 +31,7 @@ const Card = ({ subscription, isDisabled }: CardPropsType) => {
       </div>
       <div className={s.btn__wrapper}>
         <MyButton
+          onClick={setActiveCard}
           className={`${Colors.secondary} btn__card`}
           isLoading={false}
           disabled={false}>

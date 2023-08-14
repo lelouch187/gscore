@@ -27,13 +27,16 @@ export const Popup = ({ setActive }: PopupPropsType) => {
     <nav className={s.nav}>
       <ul className={s.menu}>
         <li>
-          <Link className={s.menu__link} href={routes.settings}>
-            <Settings width="24" height="24" />
+          <Link
+            onClick={() => setActive(false)}
+            className={s.menu__link}
+            href={routes.settings}>
+            <Settings />
             Settings
           </Link>
         </li>
         <li onClick={logout} className={s.menu__link}>
-          <Logout width="24" height="24" />
+          <Logout />
           Logout
         </li>
       </ul>

@@ -1,8 +1,26 @@
 @import './variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+@font-face {
+  font-family: THICCCBOI;
+  src: url("/fonts/THICCCBOI.ttf");
+  }
+  @font-face {
+  font-family: THICCCBOI-MEDIUM;
+  src: url("/fonts/THICCCBOI-Medium.ttf");
+  }
+  @font-face {
+  font-family: THICCCBOI-BOLD;
+  src: url("/fonts/THICCCBOI-Bold.ttf");
+  }
+
 * {
+  font-family: THICCCBOI;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+body{
+  background-color: $Color-800;
 }
 .container{
   margin: 0 auto;
