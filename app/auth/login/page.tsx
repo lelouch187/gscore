@@ -36,7 +36,7 @@ export default function Login() {
       });
   });
 
-  if (user) {
+  if (user.token) {
     router.push(routes.chooseCard);
   }
 
@@ -56,9 +56,7 @@ export default function Login() {
             },
           })}
         />
-        {errors.email && (
-          <span className="error_message">{errors.email.message}</span>
-        )}
+        {errors.email && <span className="error_message">{errors.email.message}</span>}
         <MyInput
           placeholder="Password"
           error={errors.password}
@@ -69,9 +67,7 @@ export default function Login() {
             },
           })}
         />
-        {errors.password && (
-          <span className="error_message">{errors.password.message}</span>
-        )}
+        {errors.password && <span className="error_message">{errors.password.message}</span>}
         <MyButton
           type="submit"
           className={`${Colors.primary} registration`}

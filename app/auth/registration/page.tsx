@@ -8,11 +8,7 @@ import '../../../components/UI/MyButton/myButton.scss';
 import '../../../components/UI/MyInput/myInput.scss';
 import { useForm } from 'react-hook-form';
 import { useRegistrationMutation } from '@/store/services';
-import {
-  ErrorRegistrationType,
-  registrationUserType,
-  successLoginType,
-} from '@/store/types';
+import { ErrorRegistrationType, registrationUserType, successLoginType } from '@/store/types';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { routes } from '@/variables/routes';
@@ -41,7 +37,7 @@ export default function Registration() {
       });
   });
 
-  if (user) {
+  if (user.token) {
     router.push(routes.chooseCard);
   }
 
@@ -50,8 +46,7 @@ export default function Registration() {
       <div className={s.registration__text}>
         <h1 className={s.registration__title}>Create account</h1>
         <p className={s.registration__subtitle}>
-          You need to enter your name and email. We will send you a temporary
-          password by email
+          You need to enter your name and email. We will send you a temporary password by email
         </p>
       </div>
       <form onSubmit={onSubmit} className={s.registration__form}>
@@ -60,9 +55,7 @@ export default function Registration() {
           error={errors.username}
           {...register('username', { required: 'field cannot be empty' })}
         />
-        {errors.username && (
-          <span className="error_message">{errors.username.message}</span>
-        )}
+        {errors.username && <span className="error_message">{errors.username.message}</span>}
         <MyInput
           placeholder="Email"
           error={errors.email}
@@ -73,9 +66,7 @@ export default function Registration() {
             },
           })}
         />
-        {errors.email && (
-          <span className="error_message">{errors.email.message}</span>
-        )}
+        {errors.email && <span className="error_message">{errors.email.message}</span>}
         <MyInput
           placeholder="Password"
           error={errors.password}
@@ -86,9 +77,7 @@ export default function Registration() {
             },
           })}
         />
-        {errors.password && (
-          <span className="error_message">{errors.password.message}</span>
-        )}
+        {errors.password && <span className="error_message">{errors.password.message}</span>}
         <MyButton
           type="submit"
           className={`${Colors.primary} registration`}
