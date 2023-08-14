@@ -23,8 +23,8 @@ export default function Subscriptions() {
   const [manageCodes, { isLoading: manageLoading, error }] = useManageCodeMutation<any>();
   const [productId, setProductId] = useState(0);
   const [subscribeId, setSubscribeId] = useState(0);
-  const [activeCodes, setActiveCodes] = useState(-1);
   const [activeCard, setActiveCard] = useState(0);
+  const [activeCodes, setActiveCodes] = useState(activeCard || -1);
   const [codesIds, setCodesIds] = useState<number[]>([]);
   const cardsNumber = subscriptions ? subscriptions.length : 0;
   const codesId: number[] = [];
