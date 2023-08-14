@@ -32,9 +32,10 @@ export default function Registration() {
     await registration(user)
       .unwrap()
       .then((resp) => {
+        console.log(resp);
         const { username, token } = resp;
         dispatch(setUser({ username, token }));
-        router.push(routes.checkout);
+        router.push(routes.login);
       });
   });
 

@@ -11,6 +11,7 @@ import { Colors } from '@/variables/colors';
 import { useLoginMutation } from '@/store/services';
 import { selectGetUser, setUser } from '@/store/slice/userSlice';
 import { routes } from '@/variables/routes';
+import { EMAILVALIDATION } from '@/variables/constant';
 
 export default function Login() {
   const {
@@ -51,7 +52,7 @@ export default function Login() {
           error={errors.email}
           {...register('email', {
             pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i,
+              value: EMAILVALIDATION,
               message: 'incorrect email',
             },
           })}
