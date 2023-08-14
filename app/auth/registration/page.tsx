@@ -17,10 +17,11 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { routes } from '@/variables/routes';
 import Link from 'next/link';
-import { useAppDispatch } from '@/store';
-import { setUser } from '@/store/slice/userSlice';
+import { useAppDispatch, useAppSelector } from '@/store';
+import { selectGetUser, setUser } from '@/store/slice/userSlice';
 
 export default function Registration() {
+  const user = useAppSelector(selectGetUser);
   const {
     register,
     handleSubmit,
@@ -39,6 +40,10 @@ export default function Registration() {
         router.push(routes.checkout);
       });
   });
+
+  if (user) {
+    router.push(routes.chooseCard);
+  }
 
   return (
     <>

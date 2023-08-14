@@ -5,11 +5,11 @@ import s from '../../../styles/auth.module.scss';
 import { MyButton } from '@/components/UI/MyButton/MyButton';
 import { useForm } from 'react-hook-form';
 import { loginUserType } from '@/store/types';
-import { useAppDispatch } from '@/store';
+import { useAppDispatch, useAppSelector } from '@/store';
 import { useRouter } from 'next/navigation';
 import { Colors } from '@/variables/colors';
 import { useLoginMutation } from '@/store/services';
-import { setUser } from '@/store/slice/userSlice';
+import { selectGetUser, setUser } from '@/store/slice/userSlice';
 import { routes } from '@/variables/routes';
 
 export default function Login() {
@@ -19,9 +19,10 @@ export default function Login() {
     formState: { errors },
   } = useForm<loginUserType>();
   const dispatch = useAppDispatch();
-
+  const user = useAppSelector(selectGetUser);
   const [login, { error, isLoading }] = useLoginMutation<any>();
   const router = useRouter();
+
   const onSubmit = handleSubmit(async (user) => {
     await login(user)
       .unwrap()
@@ -34,6 +35,10 @@ export default function Login() {
         router.push(routes.checkout);
       });
   });
+
+  if (user) {
+    router.push(routes.chooseCard);
+  }
 
   return (
     <>
