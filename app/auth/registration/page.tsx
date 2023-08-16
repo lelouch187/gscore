@@ -34,7 +34,7 @@ export default function Registration() {
       .then((resp) => {
         const { username, token } = resp;
         dispatch(setUser({ username, token }));
-        router.push(routes.login);
+        router.push(routes.checkout);
       });
   });
 
