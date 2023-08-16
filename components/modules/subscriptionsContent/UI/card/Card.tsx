@@ -1,6 +1,6 @@
 import StatusText from '@/components/UI/statusText/StatusText';
 import s from './card.module.scss';
-import { MyButton } from '@/components/UI/MyButton/MyButton';
+import { MyButton } from '@/components/UI/myButton/MyButton';
 import { Colors } from '@/variables/colors';
 import { subscriptionType } from '@/store/types';
 import getDate from '@/utils/getDate';
@@ -25,16 +25,10 @@ const Card = ({ subscription, isDisabled, setActiveCard }: CardPropsType) => {
           <p className={s.card__title}>{subscription.product.name} license</p>
           <p className={s.card__subtitle}>valid until {date}</p>
         </div>
-        <div className={s.card__right}>
-          ${subscription.product.prices[0].price}
-        </div>
+        <div className={s.card__right}>${subscription.product.prices[0].price}</div>
       </div>
       <div className={s.btn__wrapper}>
-        <MyButton
-          onClick={setActiveCard}
-          className={`${Colors.secondary} btn__card`}
-          isLoading={false}
-          disabled={false}>
+        <MyButton onClick={setActiveCard} className={`${Colors.secondary} btn__card`}>
           View
         </MyButton>
       </div>

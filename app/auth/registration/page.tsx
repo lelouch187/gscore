@@ -1,7 +1,7 @@
 'use client';
 
-import { MyButton } from '@/components/UI/MyButton/MyButton';
-import MyInput from '@/components/UI/MyInput/MyInput';
+import { MyButton } from '@/components/UI/myButton/MyButton';
+import MyInput from '@/components/UI/myInput/MyInput';
 import { Colors } from '@/variables/colors';
 import s from '../../../styles/auth.module.scss';
 import '../../../components/UI/MyButton/myButton.scss';
@@ -32,16 +32,11 @@ export default function Registration() {
     await registration(user)
       .unwrap()
       .then((resp) => {
-        console.log(resp);
         const { username, token } = resp;
         dispatch(setUser({ username, token }));
         router.push(routes.login);
       });
   });
-
-  if (user.token) {
-    router.push(routes.chooseCard);
-  }
 
   return (
     <>
@@ -80,11 +75,7 @@ export default function Registration() {
           })}
         />
         {errors.password && <span className="error_message">{errors.password.message}</span>}
-        <MyButton
-          type="submit"
-          className={`${Colors.primary} registration`}
-          isLoading={isLoading}
-          disabled={false}>
+        <MyButton type="submit" className={`${Colors.primary} registration`} isLoading={isLoading}>
           Send password
         </MyButton>
         {error && <span className="error_message">{error.data.message}</span>}

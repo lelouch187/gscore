@@ -3,4 +3,5 @@ export enum Colors {
   secondary = 'secondary',
   default = 'default',
   active = 'active',
+  loader = '#FC5842',
 }

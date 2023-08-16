@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import s from './navigation.module.scss';
 import Link from 'next/link';
 import { Popup } from '../popup/Popup';
-import { useGetUserQuery } from '@/store/services';
 import { ChevronDown } from '@/components/UI/icons/ChevronDown';
 import { routes } from '@/variables/routes';
 import { useAppSelector } from '@/store';
@@ -25,7 +24,7 @@ export const Navigation = () => {
       <div onClick={() => setActive((prev) => !prev)} className={s.name}>
         {user.username}
         <span className={isActive ? `${s.arrow} ${s.active}` : `${s.arrow}`}>
-          <ChevronDown width="24" height="24" />
+          <ChevronDown />
         </span>
       </div>
       {isActive && <Popup setActive={setActive} />}

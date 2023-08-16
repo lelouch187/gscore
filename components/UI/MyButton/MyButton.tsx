@@ -6,25 +6,21 @@ import '../../../styles/globals.scss';
 import { Loader } from '../icons/Loader';
 
 interface MyButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  isLoading: boolean;
-  disabled: boolean;
+  isLoading?: boolean;
+  disabled?: boolean;
   loaderColor?: string;
 }
 
 export const MyButton = ({
-  isLoading,
-  disabled,
+  isLoading = false,
+  disabled = false,
   loaderColor,
   children,
   ...props
 }: MyButtonProps) => {
   return (
     <button type="submit" disabled={disabled} {...props}>
-      {isLoading ? (
-        <Loader color={loaderColor} className="animate" />
-      ) : (
-        children
-      )}
+      {isLoading ? <Loader color={loaderColor} className="animate" /> : children}
     </button>
   );
 };

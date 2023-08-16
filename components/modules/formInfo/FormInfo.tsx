@@ -1,7 +1,7 @@
 'use client';
-import MyInput from '@/components/UI/MyInput/MyInput';
+import MyInput from '@/components/UI/myInput/MyInput';
 import s from './formInfo.module.scss';
-import { MyButton } from '@/components/UI/MyButton/MyButton';
+import { MyButton } from '@/components/UI/myButton/MyButton';
 import { useForm } from 'react-hook-form';
 import { Colors } from '@/variables/colors';
 import { useChangeInfoMutation } from '@/store/services';
@@ -52,9 +52,7 @@ export const FormInfo = ({ resetUser }: FormInfoPropsType) => {
         error={errors.username}
         placeholder="Username"
       />
-      {errors.username && (
-        <span className="error_message">{errors.username.message}</span>
-      )}
+      {errors.username && <span className="error_message">{errors.username.message}</span>}
       <MyInput
         {...register('email', {
           pattern: {
@@ -65,13 +63,8 @@ export const FormInfo = ({ resetUser }: FormInfoPropsType) => {
         error={errors.email}
         placeholder="Email"
       />
-      {errors.email && (
-        <span className="error_message">{errors.email.message}</span>
-      )}
-      <MyButton
-        className={`${Colors.primary} user`}
-        isLoading={isLoading}
-        disabled={false}>
+      {errors.email && <span className="error_message">{errors.email.message}</span>}
+      <MyButton className={`${Colors.primary} user`} isLoading={isLoading}>
         Save
       </MyButton>
       {error && <span className="error_message">{error.data.message}</span>}

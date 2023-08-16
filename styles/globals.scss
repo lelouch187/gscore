@@ -1,21 +1,20 @@
 @import './variables.scss';
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
 
-
 * {
   font-family: var(--font-var(--font-THICCCBOI));
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
-body{
+body {
   background-color: $Color-800;
 }
-.container{
+.container {
   margin: 0 auto;
   padding: 0 86px;
 }
-.main{
+.main {
   background-color: $Color-800;
 }
 .animate {
@@ -27,16 +26,21 @@ body{
 
 @keyframes rotation {
   0% {
-      transform:rotate(0deg);
+    transform: rotate(0deg);
   }
   100% {
-      transform:rotate(360deg);
+    transform: rotate(360deg);
   }
 }
-.slick-track{
+.slick-track {
   display: flex;
 }
-.error_message{
+.error_message {
   color: $Color-1;
   font-size: 16px;
+}
+@media (max-width: 450px) {
+  .container {
+    padding: 0 5px;
+  }
 }

@@ -1,5 +1,5 @@
 'use client';
-import { MyButton } from '@/components/UI/MyButton/MyButton';
+import { MyButton } from '@/components/UI/myButton/MyButton';
 import s from '../../../styles/subscriptions.module.scss';
 import { Colors } from '@/variables/colors';
 import { useRouter } from 'next/navigation';
@@ -16,11 +16,7 @@ export const NoSubscriptions = () => {
       <p className={s.subscriptions__subtitle}>
         You can subscribe right now by clicking on the button below
       </p>
-      <MyButton
-        onClick={() => router.push(routes.chooseCard)}
-        className={`${Colors.primary} out`}
-        isLoading={false}
-        disabled={false}>
+      <MyButton onClick={() => router.push(routes.chooseCard)} className={`${Colors.primary} out`}>
         Get Gscore
       </MyButton>
     </div>

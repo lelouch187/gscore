@@ -1,8 +1,8 @@
 'use client';
 
-import MyInput from '@/components/UI/MyInput/MyInput';
+import MyInput from '@/components/UI/myInput/MyInput';
 import s from '../../../styles/auth.module.scss';
-import { MyButton } from '@/components/UI/MyButton/MyButton';
+import { MyButton } from '@/components/UI/myButton/MyButton';
 import { useForm } from 'react-hook-form';
 import { loginUserType } from '@/store/types';
 import { useAppDispatch, useAppSelector } from '@/store';
@@ -37,10 +37,6 @@ export default function Login() {
       });
   });
 
-  if (user.token) {
-    router.push(routes.chooseCard);
-  }
-
   return (
     <>
       <div className={s.registration__text}>
@@ -69,11 +65,7 @@ export default function Login() {
           })}
         />
         {errors.password && <span className="error_message">{errors.password.message}</span>}
-        <MyButton
-          type="submit"
-          className={`${Colors.primary} registration`}
-          isLoading={isLoading}
-          disabled={false}>
+        <MyButton type="submit" className={`${Colors.primary} registration`} isLoading={isLoading}>
           Log in
         </MyButton>
         {error && <span className="error_message">{error.data.message}</span>}

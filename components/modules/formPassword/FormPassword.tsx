@@ -1,8 +1,8 @@
 'use client';
 import { useForm } from 'react-hook-form';
 import s from './formPassword.module.scss';
-import MyInput from '@/components/UI/MyInput/MyInput';
-import { MyButton } from '@/components/UI/MyButton/MyButton';
+import MyInput from '@/components/UI/myInput/MyInput';
+import { MyButton } from '@/components/UI/myButton/MyButton';
 import { Colors } from '@/variables/colors';
 import { useChangePasswordMutation } from '@/store/services';
 import { UNAUTHORIZED } from '@/variables/constant';
@@ -18,8 +18,7 @@ type FormPasswordPropsType = {
 };
 
 export const FormPassword = ({ resetUser }: FormPasswordPropsType) => {
-  const [changePassword, { isLoading, error }] =
-    useChangePasswordMutation<any>();
+  const [changePassword, { isLoading, error }] = useChangePasswordMutation<any>();
   const {
     register,
     handleSubmit,
@@ -62,13 +61,8 @@ export const FormPassword = ({ resetUser }: FormPasswordPropsType) => {
         error={errors.newPassword}
         placeholder="New Password"
       />
-      {errors.newPassword && (
-        <span className="error_message">{errors.newPassword.message}</span>
-      )}
-      <MyButton
-        className={`${Colors.primary} user`}
-        isLoading={isLoading}
-        disabled={false}>
+      {errors.newPassword && <span className="error_message">{errors.newPassword.message}</span>}
+      <MyButton className={`${Colors.primary} user`} isLoading={isLoading}>
         Save
       </MyButton>
       {error && <span className="error_message">{error.data.message}</span>}

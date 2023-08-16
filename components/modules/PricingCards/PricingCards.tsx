@@ -1,14 +1,14 @@
 'use client';
-import { useGetProductCardQuery } from '@/store/services';
+
 import s from './pricingCard.module.scss';
 import { CardItem } from './UI/cardItem/CardItem';
+import { ProductCardType } from '@/store/types';
 
-export const PricingCards = () => {
-  const { data: cards } = useGetProductCardQuery(null);
+export const PricingCards = ({ cards }: any) => {
   return (
     <div className={`${s.cardWrapper} container`}>
       {cards &&
-        cards.map((card) => {
+        cards.map((card: ProductCardType) => {
           return <CardItem key={card.id} card={card} />;
         })}
     </div>

@@ -1,4 +1,4 @@
-import { TabAuth } from '@/components/UI/TabAuth/TabAuth';
+import { TabAuth } from '@/components/UI/tabAuth/TabAuth';
 import s from './tabsAuth.module.scss';
 
 export const TabsAuth = () => {

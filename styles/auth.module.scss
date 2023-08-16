@@ -1,118 +1,151 @@
 @import './variables.scss';
 
-.auth{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.auth {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.registration{
-    &__text{
-        color: $Color-100;
-        margin-bottom: 32px;
-        width: 620px;
-    }
-    &__title{
-        color: $Color-100;
-        font-feature-settings: 'clig' off, 'liga' off;
-        font-family: var(--font-THICCCBOI);
-        font-size: 44px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 122.727%;
-        margin-bottom: 16px; 
-    }
-    &__subtitle{
-        color: $Color-100;
-        font-feature-settings: 'clig' off, 'liga' off;
-        font-family: var(--font-THICCCBOI);
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 171.429%;
-    }
-    &__form{
-    display: flex;
-    flex-direction: column;
-    gap:24px;
+.registration {
+  &__text {
+    color: $Color-100;
+    margin-bottom: 32px;
     width: 620px;
-    margin-bottom: 228px;
-}
-}
-.registration__link{
-    margin-left: 8px;
+  }
+  &__title {
+    color: $Color-100;
+    font-feature-settings: 'clig' off, 'liga' off;
     font-family: var(--font-THICCCBOI);
-    font-size: 16px;
+    font-size: 44px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 122.727%;
+    margin-bottom: 16px;
+  }
+  &__subtitle {
+    color: $Color-100;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: var(--font-THICCCBOI);
+    font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: 112.5%;
-    text-decoration: none;
-    color: $Color-1;
-}
-.checkout{
-    color: $Color-100;
+    line-height: 171.429%;
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
     width: 620px;
-    margin-bottom: 285px;
-    &__title{
-        font-family: var(--font-THICCCBOI);
-        font-size: 44px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 122.727%;
-        margin-bottom: 32px;
-    }
-    &__accordion{
-        background-color: $Color-700;
-        margin-bottom: 24px;
-    }
-    &__total{
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 48px;
-        span{
-            color: var(--neutral-colors-100, #FFF);
-            text-align: center;
-            font-feature-settings: 'clig' off, 'liga' off;
-            font-family: var(--font-THICCCBOI);
-            font-size: 28px;
-            font-style: normal;
-            font-weight: 700;
-            line-height: 142.857%;
-        }
-    }
+    margin-bottom: 228px;
+  }
 }
-.accordion__title{
-    padding: 48px 72px 32px 32px;
-    border-bottom: 1px solid $Color-500;
+.registration__link {
+  margin-left: 8px;
+  font-family: var(--font-THICCCBOI);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 112.5%;
+  text-decoration: none;
+  color: $Color-1;
+}
+.checkout {
+  color: $Color-100;
+  width: 620px;
+  border-radius: 12px;
+  margin-bottom: 285px;
+  &__title {
+    font-family: var(--font-THICCCBOI);
+    font-size: 44px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 122.727%;
+    margin-bottom: 32px;
+  }
+  &__accordion {
+    background-color: $Color-700;
+    margin-bottom: 24px;
+  }
+  &__total {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    span{
-        color: $Color-100;
-        font-feature-settings: 'clig' off, 'liga' off;
-        font-family: var(--font-THICCCBOI);
-        font-size: 24px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 141.667%;
+    margin-bottom: 48px;
+    span {
+      color: var(--neutral-colors-100, #fff);
+      text-align: center;
+      font-feature-settings: 'clig' off, 'liga' off;
+      font-family: var(--font-THICCCBOI);
+      font-size: 28px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 142.857%;
     }
+  }
 }
-.accordion__item{
-    padding: 32px 48px 48px 32px;
+.accordion__title {
+  padding: 48px 72px 32px 32px;
+  border-bottom: 1px solid $Color-500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  span {
+    color: $Color-100;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: var(--font-THICCCBOI);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 141.667%;
+  }
+}
+.accordion__item {
+  padding: 32px 48px 48px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  span {
+    color: $Color-100;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: var(--font-THICCCBOI);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 158.333%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    span{
-        color: $Color-100;
-        font-feature-settings: 'clig' off, 'liga' off;
-        font-family: var(--font-THICCCBOI);
-        font-size: 24px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 158.333%;
-        display: flex;
-        align-items: center;
-    }
+  }
 }
-.accordion__price{
-    margin-right: 9px;
+.accordion__price {
+  margin-right: 9px;
+}
+@media (max-width: 450px) {
+  .checkout {
+    width: 340px;
+    margin-bottom: 100px;
+  }
+  .checkout__title {
+    font-size: 30px;
+  }
+  .accordion__title {
+    padding: 20px;
+    span {
+      font-size: 18px;
+    }
+  }
+  .accordion__item {
+    padding: 20px;
+    span {
+      font-size: 18px;
+    }
+  }
+  .registration {
+    &__text {
+      color: $Color-100;
+      margin-bottom: 20px;
+      width: 350px;
+    }
+    &__form {
+      width: 350px;
+      margin-bottom: 100px;
+    }
+  }
 }

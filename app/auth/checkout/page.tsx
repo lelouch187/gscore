@@ -3,32 +3,30 @@
 import { Bucket } from '@/components/UI/icons/Bucket';
 import s from '../../../styles/auth.module.scss';
 import '../../../components/UI/MyButton/myButton.scss';
-import { MyButton } from '@/components/UI/MyButton/MyButton';
+import { MyButton } from '@/components/UI/myButton/MyButton';
 import { useRouter } from 'next/navigation';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { selectGetUser } from '@/store/slice/userSlice';
 import { routes } from '@/variables/routes';
 import { resetUpgrade, selectProductInfo } from '@/store/slice/productsSlice';
-import {
-  useBySubscribeMutation,
-  useUpgradeSubscribeMutation,
-} from '@/store/services';
+import { useBySubscribeMutation, useUpgradeSubscribeMutation } from '@/store/services';
 import { useResetToken } from '@/hooks/resetToken';
 import { UNAUTHORIZED } from '@/variables/constant';
 import { useState } from 'react';
 import { Colors } from '@/variables/colors';
 
 export default function Checkout() {
-  const router = useRouter();
-  const { selectedProduct, subscribeId, productId } =
-    useAppSelector(selectProductInfo);
+  const { selectedProduct, subscribeId, productId } = useAppSelector(selectProductInfo);
   const { token } = useAppSelector(selectGetUser);
   const [bySubscribe, { error: subscribeError, isLoading: subscribeLoading }] =
     useBySubscribeMutation<any>();
   const [upgrade, { error, isLoading }] = useUpgradeSubscribeMutation<any>();
-  const resetToken = useResetToken();
+
   const [errorUpgrade, setErrorUpgrade] = useState('');
+
   const dispatch = useAppDispatch();
+  const router = useRouter();
+  const resetToken = useResetToken();
 
   const handlePurchaseSubscribe = async () => {
     if (selectedProduct) {
@@ -78,9 +76,7 @@ export default function Checkout() {
         <div className={s.accordion__item}>
           <span>{selectedProduct?.sitesCount} site license</span>
           <span>
-            <span className={s.accordion__price}>
-              ${selectedProduct?.prices[0].price}
-            </span>{' '}
+            <span className={s.accordion__price}>${selectedProduct?.prices[0].price}</span>{' '}
             <Bucket />
           </span>
         </div>
@@ -93,7 +89,6 @@ export default function Checkout() {
         <MyButton
           onClick={handleUpgradeSubscribe}
           className={`${Colors.primary} checkout`}
-          disabled={false}
           isLoading={isLoading}>
           Upgrade
         </MyButton>
@@ -101,14 +96,11 @@ export default function Checkout() {
         <MyButton
           onClick={handlePurchaseSubscribe}
           className={`${Colors.primary} checkout`}
-          disabled={false}
           isLoading={subscribeLoading}>
           Purchase
         </MyButton>
       )}
-      {subscribeError && (
-        <span className="error_message">{subscribeError.data.message}</span>
-      )}
+      {subscribeError && <span className="error_message">{subscribeError.data.message}</span>}
       {error && <span className="error_message">{error.data.message}</span>}
       {errorUpgrade && <span className="error_message">{errorUpgrade}</span>}
     </div>

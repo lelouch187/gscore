@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import s from './popup.module.scss';
 import React from 'react';
-import { Settings } from '@/components/UI/icons/settings';
+import { Settings } from '@/components/UI/icons/Settings';
 import { Logout } from '@/components/UI/icons/Logout';
 import { routes } from '@/variables/routes';
 import { useAppDispatch } from '@/store';
@@ -14,11 +14,11 @@ type PopupPropsType = {
 };
 
 export const Popup = ({ setActive }: PopupPropsType) => {
-  const diptach = useAppDispatch();
+  const disptach = useAppDispatch();
   const router = useRouter();
 
   const logout = () => {
-    diptach(logoutUser());
+    disptach(logoutUser());
     setActive(false);
     router.push(routes.registration);
   };
@@ -27,10 +27,7 @@ export const Popup = ({ setActive }: PopupPropsType) => {
     <nav className={s.nav}>
       <ul className={s.menu}>
         <li>
-          <Link
-            onClick={() => setActive(false)}
-            className={s.menu__link}
-            href={routes.settings}>
+          <Link onClick={() => setActive(false)} className={s.menu__link} href={routes.settings}>
             <Settings />
             Settings
           </Link>

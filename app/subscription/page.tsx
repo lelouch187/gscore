@@ -3,7 +3,7 @@
 import { useAppSelector } from '@/store';
 import { selectGetProduct } from '@/store/slice/productsSlice';
 import s from '../../styles/subscription.module.scss';
-import { MyButton } from '@/components/UI/MyButton/MyButton';
+import { MyButton } from '@/components/UI/myButton/MyButton';
 import { Colors } from '@/variables/colors';
 import { useRouter } from 'next/navigation';
 import { routes } from '@/variables/routes';
@@ -13,6 +13,7 @@ export default function Subscription() {
   const selectedProduct = useAppSelector(selectGetProduct);
   const user = useAppSelector(selectGetUser);
   const router = useRouter();
+
   if (!user.token) {
     router.push(routes.registration);
   }
@@ -36,11 +37,7 @@ export default function Subscription() {
           </span>
         </div>
       </div>
-      <MyButton
-        onClick={() => router.push(routes.subscriptions)}
-        className={Colors.primary}
-        disabled={false}
-        isLoading={false}>
+      <MyButton onClick={() => router.push(routes.subscriptions)} className={Colors.primary}>
         Go to my subscriptions
       </MyButton>
     </div>

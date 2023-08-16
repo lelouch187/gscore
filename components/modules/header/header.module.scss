@@ -1,10 +1,16 @@
 @import '../../../styles/variables.scss';
 
-.header{
-    background-color: $Color-800;
-    padding: 32px 87px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 122px;
+.header {
+  background-color: $Color-800;
+  padding: 32px 87px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 122px;
+}
+@media (max-width: 450px) {
+  .header {
+    padding: 32px 26px 0;
+    width: 100%;
+  }
 }

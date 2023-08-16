@@ -1,5 +1,5 @@
 'use client';
-import { MyButton } from '@/components/UI/MyButton/MyButton';
+import { MyButton } from '@/components/UI/myButton/MyButton';
 import s from '../../styles/subscriptions.module.scss';
 import { Colors } from '@/variables/colors';
 import { NoSubscriptions } from '@/components/modules/noSubscriptions/NoSubscriptions';
@@ -93,11 +93,7 @@ export default function Subscriptions() {
       <div className={s.subscriptions__top}>
         <h1 className={s.subscriptions__text}>My subscriptions</h1>
         {cardsNumber && !isLoading && (
-          <MyButton
-            onClick={handleUpgradeProduct}
-            className={`${Colors.primary} subscriptions`}
-            isLoading={false}
-            disabled={false}>
+          <MyButton onClick={handleUpgradeProduct} className={`${Colors.primary} subscriptions`}>
             Upgrade
           </MyButton>
         )}
