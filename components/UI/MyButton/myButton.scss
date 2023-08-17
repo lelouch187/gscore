@@ -89,7 +89,7 @@
   height: 72px;
 }
 
-@media (max-width: 450px) {
+@media (max-width: 650px) {
   .subscriptions {
     background-color: $Color-800;
     padding: 0;
@@ -103,6 +103,22 @@
   }
   .domain {
     width: 100%;
+    margin-top: -50px;
+  }
+  .activate {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+}
+@media (max-width: 800px) {
+  .activate {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+  .domain {
+    width: 343px;
     margin-top: -50px;
   }
 }

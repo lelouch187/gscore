@@ -116,7 +116,22 @@
   width: 430px;
   margin-bottom: 32px;
 }
-@media (max-width: 450px) {
+@media (max-width: 900px) {
+  .subscriptions {
+    padding: 32px 16px 32px 16px;
+    &__text {
+      font-size: 28px;
+    }
+  }
+  .codes {
+    margin: 0 auto;
+    padding: 100px 15px 0;
+  }
+  .select__text {
+    display: none;
+  }
+}
+@media (max-width: 650px) {
   .subscriptions {
     padding: 32px 16px;
     &__text {
@@ -132,8 +147,5 @@
     button {
       display: none;
     }
-  }
-  .select__text {
-    display: none;
   }
 }

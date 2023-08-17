@@ -3,6 +3,7 @@
   display: flex;
   align-items: center;
   position: relative;
+  z-index: 10;
 }
 .link {
   font-size: 20px;
@@ -33,7 +34,7 @@
   transform: rotate(-180deg);
   margin-top: -5px;
 }
-@media (max-width: 450px) {
+@media (max-width: 500px) {
   .nav {
     display: none;
   }

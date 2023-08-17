@@ -74,6 +74,15 @@
   width: 308px;
   color: $Color-1;
 }
+@media (max-width: 1100px) {
+  .card {
+    &.active {
+      background-color: $Primary-1;
+      margin-top: 0;
+    }
+  }
+}
+
 @media (max-width: 450px) {
   .container {
     padding: 0 5px;

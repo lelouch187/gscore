@@ -6,7 +6,6 @@ import { MyButton } from '@/components/UI/myButton/MyButton';
 import { Colors } from '@/variables/colors';
 import { useChangePasswordMutation } from '@/store/services';
 import { UNAUTHORIZED } from '@/variables/constant';
-import { useState } from 'react';
 import { ErrorRegistrationType } from '@/store/types';
 
 type FormValuesType = {
@@ -18,16 +17,18 @@ type FormPasswordPropsType = {
 };
 
 export const FormPassword = ({ resetUser }: FormPasswordPropsType) => {
-  const [changePassword, { isLoading, error }] = useChangePasswordMutation<any>();
+  const [changePassword, { isLoading, error, isSuccess }] = useChangePasswordMutation<any>();
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<FormValuesType>();
 
   const onSubmit = handleSubmit(async (data) => {
     await changePassword(data)
       .unwrap()
+      .then(() => reset())
       .catch((error: ErrorRegistrationType) => {
         if (error.statusCode === UNAUTHORIZED) {
           resetUser();
@@ -39,6 +40,7 @@ export const FormPassword = ({ resetUser }: FormPasswordPropsType) => {
     <form onSubmit={onSubmit} className={s.form}>
       <h3 className={s.form__title}>Change password</h3>
       <MyInput
+        type="password"
         {...register('currentPassword', {
           minLength: {
             value: 6,
@@ -52,6 +54,7 @@ export const FormPassword = ({ resetUser }: FormPasswordPropsType) => {
         <span className="error_message">{errors.currentPassword.message}</span>
       )}
       <MyInput
+        type="password"
         {...register('newPassword', {
           minLength: {
             value: 6,
@@ -66,6 +69,7 @@ export const FormPassword = ({ resetUser }: FormPasswordPropsType) => {
         Save
       </MyButton>
       {error && <span className="error_message">{error.data.message}</span>}
+      {isSuccess && <span className="succes_message">password changed successfully</span>}
     </form>
   );
 };

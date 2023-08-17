@@ -1,7 +1,6 @@
 import { PricingCards } from '@/components/modules/pricingCards/PricingCards';
 import s from '../styles/home.module.scss';
 import Link from 'next/link';
-import { ProductCardType } from '@/store/types';
 
 export async function generateStaticParams() {
   const cards = await fetch('https://internship.purrweb.site/api/products').then((res) =>

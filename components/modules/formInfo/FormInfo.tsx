@@ -4,7 +4,7 @@ import s from './formInfo.module.scss';
 import { MyButton } from '@/components/UI/myButton/MyButton';
 import { useForm } from 'react-hook-form';
 import { Colors } from '@/variables/colors';
-import { useChangeInfoMutation } from '@/store/services';
+import { useChangeInfoMutation, useGetUserQuery } from '@/store/services';
 import { EMAILVALIDATION, UNAUTHORIZED } from '@/variables/constant';
 import { useDispatch } from 'react-redux';
 import { changeNameUser } from '@/store/slice/userSlice';
@@ -20,7 +20,9 @@ type FormInfoPropsType = {
 
 export const FormInfo = ({ resetUser }: FormInfoPropsType) => {
   const [changeInfo, { error, isLoading }] = useChangeInfoMutation<any>();
+  const { data: user } = useGetUserQuery(null);
   const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
@@ -50,7 +52,7 @@ export const FormInfo = ({ resetUser }: FormInfoPropsType) => {
       <MyInput
         {...register('username', { required: 'field cannot be empty' })}
         error={errors.username}
-        placeholder="Username"
+        placeholder={user?.username || 'Username'}
       />
       {errors.username && <span className="error_message">{errors.username.message}</span>}
       <MyInput
@@ -61,7 +63,7 @@ export const FormInfo = ({ resetUser }: FormInfoPropsType) => {
           },
         })}
         error={errors.email}
-        placeholder="Email"
+        placeholder={user?.email || 'email'}
       />
       {errors.email && <span className="error_message">{errors.email.message}</span>}
       <MyButton className={`${Colors.primary} user`} isLoading={isLoading}>

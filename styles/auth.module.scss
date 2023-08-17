@@ -64,6 +64,7 @@
   &__accordion {
     background-color: $Color-700;
     margin-bottom: 24px;
+    border-radius: 12px;
   }
   &__total {
     display: flex;
@@ -116,6 +117,38 @@
 }
 .accordion__price {
   margin-right: 9px;
+}
+@media (max-width: 660px) {
+  .checkout {
+    width: 400px;
+    margin-bottom: 100px;
+  }
+  .checkout__title {
+    font-size: 30px;
+  }
+  .accordion__title {
+    padding: 20px;
+    span {
+      font-size: 18px;
+    }
+  }
+  .accordion__item {
+    padding: 20px;
+    span {
+      font-size: 18px;
+    }
+  }
+  .registration {
+    &__text {
+      color: $Color-100;
+      margin-bottom: 20px;
+      width: 350px;
+    }
+    &__form {
+      width: 350px;
+      margin-bottom: 100px;
+    }
+  }
 }
 @media (max-width: 450px) {
   .checkout {

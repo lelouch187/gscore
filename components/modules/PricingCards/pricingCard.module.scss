@@ -3,3 +3,9 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
+@media (max-width: 1100px) {
+  .cardWrapper {
+    flex-direction: column;
+  }
+}

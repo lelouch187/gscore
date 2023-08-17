@@ -46,6 +46,21 @@
     bottom: 0;
   }
 }
+@media (max-width: 660px) {
+  .default {
+    width: 130px;
+    font-size: 16px;
+    padding-bottom: 10px;
+    &::after {
+      width: 130px;
+    }
+  }
+  .active {
+    padding-bottom: 10px;
+    width: 130px;
+    font-size: 16px;
+  }
+}
 @media (max-width: 450px) {
   .default {
     width: 100px;

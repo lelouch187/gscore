@@ -28,11 +28,7 @@ export default function Settings() {
             <p
               key={i}
               onClick={() => changeActiveTab(i)}
-              className={
-                activeTub === i
-                  ? `${s.settings__item} ${s.active}`
-                  : s.settings__item
-              }>
+              className={activeTub === i ? `${s.settings__item} ${s.active}` : s.settings__item}>
               {item}
             </p>
           );
