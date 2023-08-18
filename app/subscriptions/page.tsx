@@ -19,7 +19,7 @@ import Accordion from '@/components/modules/subscriptionsContent/UI/accordion/Ac
 export default function Subscriptions() {
   const dispatch = useAppDispatch();
   const { username } = useAppSelector(selectGetUser);
-  const { data: subscriptions, isLoading } = useGetSubscriptionsQuery(null);
+  const { data: subscriptions, isLoading, refetch } = useGetSubscriptionsQuery(null);
   const [manageCodes, { isLoading: manageLoading, error }] = useManageCodeMutation<any>();
   const [productId, setProductId] = useState(0);
   const [subscribeId, setSubscribeId] = useState(0);
@@ -52,6 +52,7 @@ export default function Subscriptions() {
   }
 
   useEffect(() => {
+    refetch();
     if (subscriptions?.length) {
       setProductId(subscriptions[0].productId);
       setSubscribeId(subscriptions[0].codes[0].subscribeId);

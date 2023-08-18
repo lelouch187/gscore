@@ -8,6 +8,7 @@ import { routes } from '@/variables/routes';
 import { useAppDispatch } from '@/store';
 import { logoutUser } from '@/store/slice/userSlice';
 import { useRouter } from 'next/navigation';
+import { resetUpgrade } from '@/store/slice/productsSlice';
 
 type PopupPropsType = {
   setActive: (item: boolean) => void;
@@ -19,6 +20,7 @@ export const Popup = ({ setActive }: PopupPropsType) => {
 
   const logout = () => {
     disptach(logoutUser());
+    disptach(resetUpgrade());
     setActive(false);
     router.push(routes.registration);
   };

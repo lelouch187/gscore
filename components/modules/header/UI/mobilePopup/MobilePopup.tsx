@@ -13,6 +13,7 @@ import { routes } from '@/variables/routes';
 import { Settings } from '@/components/UI/icons/Settings';
 import { useRouter } from 'next/navigation';
 import { Logout } from '@/components/UI/icons/Logout';
+import { resetUpgrade } from '@/store/slice/productsSlice';
 
 const MobilePopup = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -24,6 +25,7 @@ const MobilePopup = () => {
 
   const logout = () => {
     disptach(logoutUser());
+    disptach(resetUpgrade());
     setisActive(false);
     setIsVisible(false);
     router.push(routes.registration);
