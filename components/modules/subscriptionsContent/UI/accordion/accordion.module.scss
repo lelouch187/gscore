@@ -134,6 +134,7 @@
   .accordion {
     height: 338px;
     padding: 34px 20px 32px;
+    align-items: start;
     flex-direction: column;
     width: 100%;
     text-align: left;
@@ -188,6 +189,7 @@
     width: 343px;
     text-align: left;
     align-items: start;
+    margin: 0 auto;
   }
   .status__title {
     display: none;
