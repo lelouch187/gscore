@@ -10,7 +10,7 @@ import { logoutUser, selectGetUser } from '@/store/slice/userSlice';
 import { ChevronDown } from '@/components/UI/icons/ChevronDown';
 import Link from 'next/link';
 import { routes } from '@/variables/routes';
-import { Settings } from '@/components/UI/icons/Settings';
+import { Setting } from '@/components/UI/icons/Settings';
 import { useRouter } from 'next/navigation';
 import { Logout } from '@/components/UI/icons/Logout';
 import { resetUpgrade } from '@/store/slice/productsSlice';
@@ -57,7 +57,8 @@ const MobilePopup = () => {
           <div className={s.content}>
             <p onClick={() => setisActive((prev) => !prev)} className={s.name}>
               {user.username}
-              <span className={isActive ? `${s.arrow} ${s.active}` : `${s.arrow}`}>
+              <span
+                className={isActive ? `${s.arrow} ${s.active}` : `${s.arrow}`}>
                 <ChevronDown />
               </span>
             </p>
@@ -72,7 +73,7 @@ const MobilePopup = () => {
                       }}
                       className={s.menu__link}
                       href={routes.settings}>
-                      <Settings />
+                      <Setting />
                       Settings
                     </Link>
                   </li>
