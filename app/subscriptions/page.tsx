@@ -1,9 +1,12 @@
 'use client';
-import { MyButton } from '@/components/UI/myButton/MyButton';
+import { MyButton } from '@/components/UI/MyButton/MyButton';
 import s from '../../styles/subscriptions.module.scss';
 import { Colors } from '@/variables/colors';
 import { NoSubscriptions } from '@/components/modules/noSubscriptions/NoSubscriptions';
-import { useGetSubscriptionsQuery, useManageCodeMutation } from '@/store/services';
+import {
+  useGetSubscriptionsQuery,
+  useManageCodeMutation,
+} from '@/store/services';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAppDispatch, useAppSelector } from '@/store';
@@ -19,8 +22,13 @@ import Accordion from '@/components/modules/subscriptionsContent/UI/accordion/Ac
 export default function Subscriptions() {
   const dispatch = useAppDispatch();
   const { username } = useAppSelector(selectGetUser);
-  const { data: subscriptions, isLoading, refetch } = useGetSubscriptionsQuery(null);
-  const [manageCodes, { isLoading: manageLoading, error }] = useManageCodeMutation<any>();
+  const {
+    data: subscriptions,
+    isLoading,
+    refetch,
+  } = useGetSubscriptionsQuery(null);
+  const [manageCodes, { isLoading: manageLoading, error }] =
+    useManageCodeMutation<any>();
   const [productId, setProductId] = useState(0);
   const [subscribeId, setSubscribeId] = useState(0);
   const [activeCard, setActiveCard] = useState(0);
@@ -94,7 +102,9 @@ export default function Subscriptions() {
       <div className={s.subscriptions__top}>
         <h1 className={s.subscriptions__text}>My subscriptions</h1>
         {cardsNumber && !isLoading && (
-          <MyButton onClick={handleUpgradeProduct} className={`${Colors.primary} subscriptions`}>
+          <MyButton
+            onClick={handleUpgradeProduct}
+            className={`${Colors.primary} subscriptions`}>
             Upgrade
           </MyButton>
         )}
@@ -123,7 +133,8 @@ export default function Subscriptions() {
                   <ArrowLeft />
                 </button>
                 <div className={s.slide_numbers}>
-                  <div className={s.slide_current}>{activeCard + 1}</div>/{cardsNumber}
+                  <div className={s.slide_current}>{activeCard + 1}</div>/
+                  {cardsNumber}
                 </div>
                 <button
                   onClick={() => {
@@ -156,16 +167,25 @@ export default function Subscriptions() {
                   );
                 })}
                 <div className={s.select__domain}>
-                  <p className={s.select__text}>Select the domains you want to keep</p>
+                  <p className={s.select__text}>
+                    Select the domains you want to keep
+                  </p>
                   <MyButton
                     onClick={handleConfirm}
                     className={`${Colors.primary} domain`}
-                    disabled={!!(codesIds.length !== subscriptions[activeCard]?.product.sitesCount)}
+                    disabled={
+                      !!(
+                        codesIds.length !==
+                        subscriptions[activeCard]?.product.sitesCount
+                      )
+                    }
                     isLoading={manageLoading}>
                     Сonfirm
                   </MyButton>
                 </div>
-                {error && <span className="error_message">{error.data.message}</span>}
+                {error && (
+                  <span className="error_message">{error.data.message}</span>
+                )}
               </div>
             ) : null}
           </>

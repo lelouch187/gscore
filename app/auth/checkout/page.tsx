@@ -3,20 +3,25 @@
 import { Bucket } from '@/components/UI/icons/Bucket';
 import s from '../../../styles/auth.module.scss';
 import '../../../components/UI/MyButton/myButton.scss';
-import { MyButton } from '@/components/UI/myButton/MyButton';
+
 import { useRouter } from 'next/navigation';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { selectGetUser } from '@/store/slice/userSlice';
 import { routes } from '@/variables/routes';
 import { resetUpgrade, selectProductInfo } from '@/store/slice/productsSlice';
-import { useBySubscribeMutation, useUpgradeSubscribeMutation } from '@/store/services';
+import {
+  useBySubscribeMutation,
+  useUpgradeSubscribeMutation,
+} from '@/store/services';
 import { useResetToken } from '@/hooks/resetToken';
 import { UNAUTHORIZED } from '@/variables/constant';
 import { useState } from 'react';
 import { Colors } from '@/variables/colors';
+import { MyButton } from '@/components/UI/MyButton/MyButton';
 
 export default function Checkout() {
-  const { selectedProduct, subscribeId, productId } = useAppSelector(selectProductInfo);
+  const { selectedProduct, subscribeId, productId } =
+    useAppSelector(selectProductInfo);
   const { token } = useAppSelector(selectGetUser);
   const [bySubscribe, { error: subscribeError, isLoading: subscribeLoading }] =
     useBySubscribeMutation<any>();
@@ -76,7 +81,9 @@ export default function Checkout() {
         <div className={s.accordion__item}>
           <span>{selectedProduct?.sitesCount} site license</span>
           <span>
-            <span className={s.accordion__price}>${selectedProduct?.prices[0].price}</span>{' '}
+            <span className={s.accordion__price}>
+              ${selectedProduct?.prices[0].price}
+            </span>{' '}
             <Bucket />
           </span>
         </div>
@@ -100,7 +107,9 @@ export default function Checkout() {
           Purchase
         </MyButton>
       )}
-      {subscribeError && <span className="error_message">{subscribeError.data.message}</span>}
+      {subscribeError && (
+        <span className="error_message">{subscribeError.data.message}</span>
+      )}
       {error && <span className="error_message">{error.data.message}</span>}
       {errorUpgrade && <span className="error_message">{errorUpgrade}</span>}
     </div>

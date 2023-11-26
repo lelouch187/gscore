@@ -1,11 +1,11 @@
-import { PricingCards } from '@/components/modules/pricingCards/PricingCards';
+import { PricingCards } from '@/components/modules/PricingCards/PricingCards';
 import s from '../styles/home.module.scss';
 import Link from 'next/link';
 
 export async function generateStaticParams() {
-  const cards = await fetch('https://internship.purrweb.site/api/products').then((res) =>
-    res.json(),
-  );
+  const cards = await fetch(
+    'https://internship.purrweb.site/api/products',
+  ).then((res) => res.json());
 
   return cards;
 }

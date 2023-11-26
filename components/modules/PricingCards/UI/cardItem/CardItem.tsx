@@ -8,7 +8,7 @@ import { routes } from '@/variables/routes';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { selectProduct } from '@/store/slice/productsSlice';
 import { selectGetUser } from '@/store/slice/userSlice';
-import { MyButton } from '@/components/UI/myButton/MyButton';
+import { MyButton } from '@/components/UI/MyButton/MyButton';
 
 type CardItemProps = {
   card: ProductCardType;
@@ -37,13 +37,15 @@ export const CardItem = ({ card }: CardItemProps) => {
       <p className={s.cost}>${card.prices[0].price}</p>
       <h2 className={s.title}>{card.sitesCount} site license</h2>
       <p className={card.id === 2 ? `${s.text} ${s.active}` : `${s.text}`}>
-        Get the advanced WordPress plugin that optimizes content with GSC keywords at one low annual
-        price
+        Get the advanced WordPress plugin that optimizes content with GSC
+        keywords at one low annual price
       </p>
       <ul className={s.list}>
         <li className={s.list__item}>
           <CheckCircle />
-          <span className={s.list__text}>All features for {card.sitesCount} sites</span>
+          <span className={s.list__text}>
+            All features for {card.sitesCount} sites
+          </span>
         </li>
         <li className={s.list__item}>
           <CheckCircle />

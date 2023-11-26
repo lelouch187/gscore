@@ -1,8 +1,8 @@
 'use client';
 
-import MyInput from '@/components/UI/myInput/MyInput';
+import MyInput from '@/components/UI/MyInput/MyInput';
 import s from '../../../styles/auth.module.scss';
-import { MyButton } from '@/components/UI/myButton/MyButton';
+import { MyButton } from '@/components/UI/MyButton/MyButton';
 import { useForm } from 'react-hook-form';
 import { loginUserType } from '@/store/types';
 import { useAppDispatch, useAppSelector } from '@/store';
@@ -53,7 +53,9 @@ export default function Login() {
             },
           })}
         />
-        {errors.email && <span className="error_message">{errors.email.message}</span>}
+        {errors.email && (
+          <span className="error_message">{errors.email.message}</span>
+        )}
         <MyInput
           placeholder="Password"
           error={errors.password}
@@ -64,8 +66,13 @@ export default function Login() {
             },
           })}
         />
-        {errors.password && <span className="error_message">{errors.password.message}</span>}
-        <MyButton type="submit" className={`${Colors.primary} registration`} isLoading={isLoading}>
+        {errors.password && (
+          <span className="error_message">{errors.password.message}</span>
+        )}
+        <MyButton
+          type="submit"
+          className={`${Colors.primary} registration`}
+          isLoading={isLoading}>
           Log in
         </MyButton>
         {error && <span className="error_message">{error.data.message}</span>}
