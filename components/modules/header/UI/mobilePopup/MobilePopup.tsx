@@ -10,7 +10,7 @@ import { logoutUser, selectGetUser } from '@/store/slice/userSlice';
 import { ChevronDown } from '@/components/UI/icons/ChevronDown';
 import Link from 'next/link';
 import { routes } from '@/variables/routes';
-import { Setting } from '@/components/UI/icons/Settings';
+import { Setting } from '@/components/UI/icons/Setting';
 import { useRouter } from 'next/navigation';
 import { Logout } from '@/components/UI/icons/Logout';
 import { resetUpgrade } from '@/store/slice/productsSlice';

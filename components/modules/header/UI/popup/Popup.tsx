@@ -8,7 +8,7 @@ import { useAppDispatch } from '@/store';
 import { logoutUser } from '@/store/slice/userSlice';
 import { useRouter } from 'next/navigation';
 import { resetUpgrade } from '@/store/slice/productsSlice';
-import { Setting } from '@/components/UI/icons/Settings';
+import { Setting } from '@/components/UI/icons/Setting';
 
 type PopupPropsType = {
   setActive: (item: boolean) => void;
